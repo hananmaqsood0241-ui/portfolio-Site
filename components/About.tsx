@@ -43,7 +43,7 @@ export default function About() {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
 
   return (
-    <section id="about" className="py-24 relative overflow-hidden">
+    <section id="about" className="py-16 lg:py-24 relative overflow-hidden">
       {/* Background element */}
       <div
         className="orb"
@@ -64,8 +64,6 @@ export default function About() {
           className="text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
         >
           <span
             className="text-sm font-semibold tracking-widest uppercase mb-3 block"
@@ -82,11 +80,12 @@ export default function About() {
           </p>
         </motion.div>
 
-        <div ref={ref} className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-20 items-start">
           {/* Left — Bio */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
             <div
@@ -125,7 +124,8 @@ export default function About() {
                 <motion.div
                   key={l.lang}
                   initial={{ opacity: 0, y: 20 }}
-                  animate={inView ? { opacity: 1, y: 0 } : {}}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
                   transition={{ delay: i * 0.1, duration: 0.5 }}
                   className="flex items-center gap-3 px-5 py-3 rounded-xl"
                   style={{
@@ -146,7 +146,8 @@ export default function About() {
           {/* Right — Skills + Timeline */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="flex flex-col gap-14"
           >
@@ -160,7 +161,8 @@ export default function About() {
                   <motion.div
                     key={skill}
                     initial={{ opacity: 0, y: 15 }}
-                    animate={inView ? { opacity: 1, y: 0 } : {}}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
                     transition={{ delay: i * 0.05 + 0.3, duration: 0.4 }}
                     className="flex items-center gap-2.5 py-2.5 px-4 rounded-xl"
                     style={{
@@ -192,7 +194,8 @@ export default function About() {
                     <motion.div
                       key={item.year}
                       initial={{ opacity: 0, x: 20 }}
-                      animate={inView ? { opacity: 1, x: 0 } : {}}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
                       transition={{ delay: i * 0.1 + 0.5, duration: 0.5 }}
                       className="relative"
                     >

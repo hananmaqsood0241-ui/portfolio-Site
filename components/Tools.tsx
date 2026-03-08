@@ -19,7 +19,7 @@ const tools = [
 
 export default function Tools() {
   return (
-    <section id="tools" className="py-24 relative overflow-hidden">
+    <section id="tools" className="py-16 lg:py-24 relative overflow-hidden">
       {/* Separator line */}
       <div
         className="absolute top-0 left-0 right-0 h-px"

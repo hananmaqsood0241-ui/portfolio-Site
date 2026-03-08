@@ -172,7 +172,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.2 }}
-            className="fixed top-[68px] left-4 right-4 z-40 rounded-2xl py-4 px-4"
+            className="fixed top-20 left-4 right-4 z-40 rounded-2xl py-4 px-4 shadow-2xl"
             style={{
               background: 'rgba(10, 10, 20, 0.97)',
               backdropFilter: 'blur(20px)',

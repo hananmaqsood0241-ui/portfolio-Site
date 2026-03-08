@@ -23,8 +23,8 @@ export default function Contact() {
   };
 
   const inputStyle = {
-    background: 'rgba(255, 255, 255, 0.04)',
-    border: '1px solid rgba(139, 92, 246, 0.2)',
+    background: 'rgba(0, 0, 0, 0.2)', // Darker background to ensure visibility
+    border: '1px solid rgba(139, 92, 246, 0.3)', // Stronger border
     borderRadius: '12px',
     padding: '14px 16px',
     width: '100%',
@@ -63,7 +63,7 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contact" className="py-24 relative overflow-hidden">
+    <section id="contact" className="py-16 lg:py-24 relative overflow-hidden">
       {/* BG orb */}
       <div
         className="orb"
@@ -230,9 +230,10 @@ export default function Contact() {
                         value={form.name}
                         onChange={handleChange}
                         placeholder="John Doe"
+                        className="bg-black/20 dark:bg-white/5"
                         style={{ ...inputStyle, paddingLeft: '38px' }}
                         onFocus={(e) => { e.target.style.borderColor = '#8b5cf6'; }}
-                        onBlur={(e) => { e.target.style.borderColor = 'rgba(139, 92, 246, 0.2)'; }}
+                        onBlur={(e) => { e.target.style.borderColor = 'rgba(139, 92, 246, 0.3)'; }}
                       />
                     </div>
                   </div>
@@ -249,9 +250,10 @@ export default function Contact() {
                         value={form.email}
                         onChange={handleChange}
                         placeholder="you@company.com"
+                        className="bg-black/20 dark:bg-white/5"
                         style={{ ...inputStyle, paddingLeft: '38px' }}
                         onFocus={(e) => { e.target.style.borderColor = '#8b5cf6'; }}
-                        onBlur={(e) => { e.target.style.borderColor = 'rgba(139, 92, 246, 0.2)'; }}
+                        onBlur={(e) => { e.target.style.borderColor = 'rgba(139, 92, 246, 0.3)'; }}
                       />
                     </div>
                   </div>
@@ -294,9 +296,10 @@ export default function Contact() {
                       value={form.message}
                       onChange={handleChange}
                       placeholder="Tell me about your business, current email setup, and what you'd like to achieve..."
+                      className="bg-black/20 dark:bg-white/5"
                       style={{ ...inputStyle, paddingLeft: '38px', resize: 'vertical' }}
                       onFocus={(e) => { e.target.style.borderColor = '#8b5cf6'; }}
-                      onBlur={(e) => { e.target.style.borderColor = 'rgba(139, 92, 246, 0.2)'; }}
+                      onBlur={(e) => { e.target.style.borderColor = 'rgba(139, 92, 246, 0.3)'; }}
                     />
                   </div>
                 </div>

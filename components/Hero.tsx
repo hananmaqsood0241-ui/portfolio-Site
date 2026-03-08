@@ -9,8 +9,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center overflow-hidden"
-      style={{ paddingTop: '88px', paddingBottom: '60px' }}
+      className="relative min-h-screen flex items-center overflow-hidden pt-32 pb-16 lg:pt-40 lg:pb-24"
     >
       {/* BG orbs */}
       <div className="orb" style={{ width:'600px', height:'600px', background:'radial-gradient(circle,#7c3aed,#4c1d95)', top:'-200px', right:'-150px', opacity:0.12 }} />
@@ -58,7 +57,8 @@ export default function Hero() {
               initial={{ opacity:0 }}
               animate={{ opacity:1 }}
               transition={{ delay:0.45 }}
-              style={{ color:'#a855f7', fontSize:'1.1rem', fontWeight:600, minHeight:'30px', marginBottom:'18px' }}
+              className="min-h-[60px] md:min-h-[30px]"
+              style={{ color:'#a855f7', fontSize:'1.1rem', fontWeight:600, marginBottom:'18px' }}
             >
               <TypeAnimation
                 sequence={['Email Campaign Strategist 📧',2000,'Klaviyo & Mailchimp Expert 🚀',2000,'Automation Flow Designer ⚡',2000,'Revenue Growth Partner 📈',2000]}
@@ -73,7 +73,8 @@ export default function Hero() {
               initial={{ opacity:0, y:20 }}
               animate={{ opacity:1, y:0 }}
               transition={{ delay:0.55 }}
-              style={{ color:'var(--text-secondary)', fontSize:'1rem', lineHeight:1.78, maxWidth:'520px', marginBottom:'36px' }}
+              className="text-base leading-relaxed max-w-[520px] mb-8"
+              style={{ color:'var(--text-secondary)' }}
             >
               I help eCommerce, SaaS, and service-based businesses grow revenue and
               retain customers through strategic campaigns, smart automation, and
@@ -136,7 +137,7 @@ export default function Hero() {
             animate={{ opacity:1, x:0 }}
             transition={{ duration:0.8, delay:0.3, ease:'easeOut' }}
           >
-            <div className="relative floating max-w-full aspect-square w-[300px] sm:w-[320px] lg:w-[350px]">
+            <div className="relative floating w-[280px] sm:w-[320px] lg:w-[350px] aspect-square">
 
               {/* Animated conic gradient ring */}
               <div style={{

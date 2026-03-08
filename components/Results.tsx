@@ -53,7 +53,7 @@ export default function Results() {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
 
   return (
-    <section id="results" className="py-24 relative overflow-hidden">
+    <section id="results" className="py-16 lg:py-24 relative overflow-hidden">
       {/* Gradient background */}
       <div
         className="absolute inset-0"
@@ -92,7 +92,8 @@ export default function Results() {
             <motion.div
               key={stat.label}
               initial={{ opacity: 0, y: 40 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.1 }}
               transition={{ delay: i * 0.1, duration: 0.6 }}
               className="stat-card group flex flex-col items-center justify-center text-center"
             >

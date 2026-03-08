@@ -61,7 +61,7 @@ export default function Testimonials() {
         }}
       />
 
-      <div className="w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 relative z-10">
+      <div className="w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 relative z-10 overflow-hidden">
         {/* Header */}
         <motion.div
           className="text-center mb-16"
@@ -101,7 +101,7 @@ export default function Testimonials() {
               1024: { slidesPerView: 3, spaceBetween: 32 },
             }}
             style={{ paddingBottom: '60px' }}
-            className="testimonial-swiper"
+            className="testimonial-swiper w-full"
           >
             {testimonials.map((t, i) => (
               <SwiperSlide key={i} className="h-auto">

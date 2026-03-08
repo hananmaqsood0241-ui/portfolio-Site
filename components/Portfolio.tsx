@@ -107,7 +107,7 @@ export default function Portfolio() {
   const [hovered, setHovered] = useState<number | null>(null);
 
   return (
-    <section id="portfolio" className="py-24 relative overflow-hidden">
+    <section id="portfolio" className="py-16 lg:py-24 relative overflow-hidden">
       <div
         className="orb"
         style={{
