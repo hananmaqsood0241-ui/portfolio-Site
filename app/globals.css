@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
-@import "tailwindcss";
-
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 /* ─── Design Tokens ─── */
 :root {
   --bg-primary: #0a0a0f;
@@ -67,6 +68,15 @@ body {
   background-clip: text;
 }
 
+/* ─── Background Orbs ─── */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(60px);
+}
+
 /* ─── Buttons ─── */
 .btn-primary {
   background: linear-gradient(135deg, #7c3aed, #a855f7);
@@ -125,15 +135,6 @@ body {
   color: var(--text-secondary);
   max-width: 580px;
   line-height: 1.75;
-}
-
-/* ─── Orbs / background blobs ─── */
-.orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(90px);
-  pointer-events: none;
-  z-index: 0;
 }
 
 /* ─── Cards ─── */
