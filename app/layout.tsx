@@ -4,23 +4,31 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Hanan — Email Marketing Expert | Klaviyo, Mailchimp & Automation Specialist",
   description:
-    "Hanan is a results-driven Email Marketing Specialist with 3+ years of experience helping eCommerce, SaaS, and service-based businesses grow with strategic campaigns, automation flows, and data-driven optimization.",
+    "Hanan — Email Marketing Specialist from Pakistan. Klaviyo, Mailchimp & automation expert with 48% open rates. Available for freelance email campaigns, automation setup, and strategy.",
   keywords: [
-    "email marketing expert",
-    "Klaviyo specialist",
-    "Mailchimp expert",
+    "email marketing specialist",
+    "Klaviyo expert",
+    "Mailchimp freelancer",
     "email automation",
     "Pakistan email marketer",
+    "hire email marketer",
     "email campaign strategy",
     "Hanan email marketing",
   ],
   authors: [{ name: "Hanan" }],
   openGraph: {
-    title: "Hanan — Email Marketing Expert",
+    title: "Hanan — Email Marketing Expert | Klaviyo & Automation Specialist",
     description:
-      "Helping brands grow revenue through strategic email campaigns, automation, and smart segmentation.",
+      "I help eCommerce and SaaS brands grow revenue with email marketing. 48% open rates. 3+ years experience.",
     type: "website",
     locale: "en_US",
+    images: ["/hanan-og.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Hanan — Email Marketing Expert | Klaviyo & Automation Specialist",
+    description:
+      "I help eCommerce and SaaS brands grow revenue with email marketing. 48% open rates. 3+ years experience.",
   },
 };
 
