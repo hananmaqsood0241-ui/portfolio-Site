@@ -1,29 +1,32 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const tools = [
-  { name: 'Klaviyo', emoji: '📧', color: '#3b82f6' },
-  { name: 'Mailchimp', emoji: '🐵', color: '#f59e0b' },
-  { name: 'ConvertKit', emoji: '✉️', color: '#f97316' },
-  { name: 'MailerLite', emoji: '🟢', color: '#22c55e' },
-  { name: 'Brevo', emoji: '🔵', color: '#0ea5e9' },
-  { name: 'HubSpot', emoji: '🔶', color: '#f97316' },
-  { name: 'Zapier', emoji: '⚡', color: '#f59e0b' },
-  { name: 'Canva', emoji: '🎨', color: '#00c4cc' },
-  { name: 'Google Analytics', emoji: '📊', color: '#f59e0b' },
-  { name: 'Google Sheets', emoji: '📗', color: '#22c55e' },
-  { name: 'Notion', emoji: '⬛', color: '#a1a1aa' },
-  { name: 'ActiveCampaign', emoji: '🔴', color: '#ef4444' },
+  { name: 'Klaviyo', emoji: '📧', color: '#3b82f6', tooltip: 'Advanced eCommerce email automation' },
+  { name: 'Mailchimp', emoji: '🐵', color: '#f59e0b', tooltip: 'Campaign management & list building' },
+  { name: 'ConvertKit', emoji: '✉️', color: '#f97316', tooltip: 'Creator-focused email marketing' },
+  { name: 'MailerLite', emoji: '🟢', color: '#22c55e', tooltip: 'Affordable automation for small business' },
+  { name: 'Brevo', emoji: '🔵', color: '#0ea5e9', tooltip: 'Multi-channel email + SMS platform' },
+  { name: 'HubSpot', emoji: '🔶', color: '#f97316', tooltip: 'CRM + email marketing integration' },
+  { name: 'Zapier', emoji: '⚡', color: '#f59e0b', tooltip: 'No-code workflow automation' },
+  { name: 'Canva', emoji: '🎨', color: '#00c4cc', tooltip: 'Email template design' },
+  { name: 'Google Analytics', emoji: '📊', color: '#f59e0b', tooltip: 'Campaign performance tracking' },
+  { name: 'Google Sheets', emoji: '📗', color: '#22c55e', tooltip: 'Data management & reporting' },
+  { name: 'Notion', emoji: '⬛', color: '#a1a1aa', tooltip: 'Project & workflow management' },
+  { name: 'ActiveCampaign', emoji: '🔴', color: '#ef4444', tooltip: 'Marketing automation & CRM' },
 ];
 
 export default function Tools() {
+  const [hoveredTool, setHoveredTool] = useState<number | null>(null);
+
   return (
     <section id="tools" className="py-16 lg:py-24 relative overflow-hidden">
-      {/* Separator line */}
+      {/* Separator line — iridescent */}
       <div
         className="absolute top-0 left-0 right-0 h-px"
-        style={{ background: 'linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.4), transparent)' }}
+        style={{ background: 'linear-gradient(90deg, transparent, var(--accent-cyan), var(--accent-lilac), var(--accent-pink), transparent)' }}
       />
 
       <div className="w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 relative z-10">
@@ -35,7 +38,7 @@ export default function Tools() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <span className="text-sm font-semibold tracking-widest uppercase mb-3 block" style={{ color: '#a855f7' }}>
+          <span className="text-sm font-semibold tracking-widest uppercase mb-3 block" style={{ color: 'var(--accent-cyan)' }}>
             Tools & Platforms
           </span>
           <h2 className="section-title">
@@ -57,16 +60,50 @@ export default function Tools() {
               viewport={{ once: true }}
               transition={{ delay: i * 0.06, duration: 0.4, type: 'spring', stiffness: 200 }}
               whileHover={{ scale: 1.08, y: -5 }}
-              className="tool-badge flex flex-col items-center text-center justify-center cursor-pointer"
+              className="tool-badge flex flex-col items-center text-center justify-center cursor-pointer relative"
               style={{ padding: '24px 16px' }}
+              onMouseEnter={() => setHoveredTool(i)}
+              onMouseLeave={() => setHoveredTool(null)}
             >
               <span className="text-4xl mb-3 block" role="img" aria-label={tool.name}>{tool.emoji}</span>
               <span className="text-sm font-semibold" style={{ color: 'var(--text-primary)' }}>{tool.name}</span>
+
+              {/* Tooltip on hover (#13) */}
+              <AnimatePresence>
+                {hoveredTool === i && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 8, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 8, scale: 0.95 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute -bottom-14 left-1/2 -translate-x-1/2 whitespace-nowrap px-3 py-2 rounded-xl text-xs font-medium z-50 pointer-events-none"
+                    style={{
+                      background: 'var(--glass-bg-thick)',
+                      backdropFilter: 'blur(20px)',
+                      WebkitBackdropFilter: 'blur(20px)',
+                      border: '1px solid var(--glass-border)',
+                      color: 'var(--text-primary)',
+                      boxShadow: 'var(--glass-shadow)',
+                    }}
+                  >
+                    {tool.tooltip}
+                    {/* Arrow */}
+                    <div
+                      className="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 rotate-45"
+                      style={{
+                        background: 'var(--glass-bg-thick)',
+                        borderTop: '1px solid var(--glass-border)',
+                        borderLeft: '1px solid var(--glass-border)',
+                      }}
+                    />
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </motion.div>
           ))}
         </div>
 
-        {/* Additional platforms text */}
+        {/* Additional platforms text — Fixed: removed duplicate ActiveCampaign (#7) */}
         <motion.div
           className="text-center mt-12"
           initial={{ opacity: 0 }}
@@ -75,15 +112,15 @@ export default function Tools() {
           transition={{ delay: 0.5 }}
         >
           <p className="text-sm font-medium" style={{ color: 'var(--text-secondary)' }}>
-            + ActiveCampaign, Drip, Omnisend, and other major platforms
+            + Drip, Omnisend, n8n, and other major platforms
           </p>
         </motion.div>
       </div>
 
-      {/* Bottom separator */}
+      {/* Bottom separator — iridescent */}
       <div
         className="absolute bottom-0 left-0 right-0 h-px"
-        style={{ background: 'linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.4), transparent)' }}
+        style={{ background: 'linear-gradient(90deg, transparent, var(--accent-pink), var(--accent-lilac), var(--accent-cyan), transparent)' }}
       />
     </section>
   );

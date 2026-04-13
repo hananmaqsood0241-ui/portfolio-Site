@@ -20,22 +20,22 @@ const journey = [
   {
     year: '2021',
     title: 'Started Email Marketing Career',
-    desc: 'Began as a freelance email marketer, mastering Mailchimp and campaign fundamentals.',
+    desc: 'Mastered Mailchimp fundamentals. Delivered first 3 client campaigns with 30%+ open rates as a freelancer.',
   },
   {
     year: '2022',
     title: 'Specialized in Klaviyo & eCommerce',
-    desc: 'Expanded into eCommerce email marketing, building advanced Klaviyo flows and automation sequences.',
+    desc: 'Built advanced Klaviyo automation flows for fashion and beauty eCommerce brands. Achieved first 40%+ open rate campaign.',
   },
   {
     year: '2023',
-    title: 'Scaled to SaaS & Service Brands',
-    desc: 'Took on SaaS and service-based clients, implementing lifecycle marketing and CRM integrations.',
+    title: 'Expanded to SaaS & Service Brands',
+    desc: 'Implemented lifecycle marketing and CRM integrations for SaaS tools. Added HubSpot, Brevo, and ConvertKit to expertise.',
   },
   {
     year: '2024–Now',
     title: 'Full-Stack Email Strategy & SMS',
-    desc: 'Now delivering end-to-end email strategies, SMS marketing, and multi-channel automation for global clients.',
+    desc: 'Delivering end-to-end email + SMS strategies for global clients. 48% open rates, 22% CTR, multi-channel automation.',
   },
 ];
 
@@ -50,11 +50,22 @@ export default function About() {
         style={{
           width: '500px',
           height: '500px',
-          background: 'radial-gradient(circle, #6d28d9, transparent)',
+          background: 'radial-gradient(circle, #00d2d3, transparent)',
           top: '50%',
           left: '-200px',
           transform: 'translateY(-50%)',
-          opacity: 0.08,
+          opacity: 0.06,
+        }}
+      />
+      <div
+        className="orb"
+        style={{
+          width: '350px',
+          height: '350px',
+          background: 'radial-gradient(circle, #f783ac, transparent)',
+          bottom: '-100px',
+          right: '-100px',
+          opacity: 0.05,
         }}
       />
 
@@ -67,7 +78,7 @@ export default function About() {
         >
           <span
             className="text-sm font-semibold tracking-widest uppercase mb-3 block"
-            style={{ color: '#a855f7' }}
+            style={{ color: 'var(--accent-cyan)' }}
           >
             About Me
           </span>
@@ -89,8 +100,7 @@ export default function About() {
             transition={{ duration: 0.6 }}
           >
             <div
-              className="glass rounded-3xl p-8 sm:p-10 mb-8"
-              style={{ border: '1px solid rgba(139, 92, 246, 0.2)' }}
+              className="glass-card p-8 sm:p-10 mb-8"
             >
               <h3 className="text-2xl font-bold mb-6" style={{ fontFamily: 'Space Grotesk, sans-serif', color: 'var(--text-primary)' }}>
                 Hi, I&apos;m Hanan 👋
@@ -114,7 +124,7 @@ export default function About() {
               </div>
             </div>
 
-            {/* Languages */}
+            {/* Languages — glass pills */}
             <div className="flex flex-wrap gap-3">
               {[
                 { lang: 'English', level: 'Fluent', flag: '🇬🇧' },
@@ -127,10 +137,13 @@ export default function About() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1, duration: 0.5 }}
-                  className="flex items-center gap-3 px-5 py-3 rounded-xl"
+                  className="flex items-center gap-3 px-5 py-3 rounded-2xl"
                   style={{
-                    background: 'rgba(139, 92, 246, 0.06)',
-                    border: '1px solid rgba(139, 92, 246, 0.15)',
+                    background: 'var(--glass-bg)',
+                    backdropFilter: 'blur(16px)',
+                    WebkitBackdropFilter: 'blur(16px)',
+                    border: '1px solid var(--glass-border)',
+                    boxShadow: 'var(--glass-inner-highlight)',
                   }}
                 >
                   <span className="text-xl">{l.flag}</span>
@@ -164,29 +177,32 @@ export default function About() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.05 + 0.3, duration: 0.4 }}
-                    className="flex items-center gap-2.5 py-2.5 px-4 rounded-xl"
+                    className="flex items-center gap-2.5 py-2.5 px-4 rounded-full"
                     style={{
-                      background: 'rgba(139, 92, 246, 0.05)',
-                      border: '1px solid rgba(139, 92, 246, 0.15)',
+                      background: 'var(--glass-bg)',
+                      backdropFilter: 'blur(12px)',
+                      WebkitBackdropFilter: 'blur(12px)',
+                      border: '1px solid var(--glass-border)',
+                      boxShadow: 'var(--glass-inner-highlight)',
                     }}
                   >
-                    <FiCheckCircle style={{ color: '#a855f7', flexShrink: 0, fontSize: '16px' }} />
+                    <FiCheckCircle style={{ color: 'var(--accent-teal)', flexShrink: 0, fontSize: '16px' }} />
                     <span className="text-sm font-medium" style={{ color: 'var(--text-primary)' }}>{skill}</span>
                   </motion.div>
                 ))}
               </div>
             </div>
 
-            {/* Career Timeline */}
+            {/* Career Timeline — Updated with specific achievements (#12) */}
             <div>
               <h3 className="text-xl font-bold mb-8" style={{ fontFamily: 'Space Grotesk, sans-serif', color: 'var(--text-primary)' }}>
                 Career Journey
               </h3>
               <div className="relative pl-6">
-                {/* Vertical line */}
+                {/* Vertical line — iridescent */}
                 <div
                   className="absolute left-[7px] top-2 bottom-0 w-[2px] rounded-full"
-                  style={{ background: 'linear-gradient(to bottom, #7c3aed, rgba(139,92,246,0.1))' }}
+                  style={{ background: 'linear-gradient(to bottom, var(--accent-cyan), var(--accent-lilac), rgba(177,151,252,0.1))' }}
                 />
 
                 <div className="space-y-10">
@@ -199,16 +215,27 @@ export default function About() {
                       transition={{ delay: i * 0.1 + 0.5, duration: 0.5 }}
                       className="relative"
                     >
-                      {/* Dot */}
+                      {/* Dot — iridescent glow */}
                       <div
-                        className="absolute -left-[30px] top-1.5 w-[14px] h-[14px] rounded-full border-2 border-purple-500 bg-white dark:bg-black"
-                        style={{ boxShadow: '0 0 10px rgba(139, 92, 246, 0.5)' }}
+                        className="absolute -left-[30px] top-1.5 w-[14px] h-[14px] rounded-full"
+                        style={{
+                          background: 'var(--accent-cyan)',
+                          border: '3px solid var(--bg-primary)',
+                          boxShadow: '0 0 12px rgba(0, 210, 211, 0.5)',
+                        }}
                       />
 
                       <div>
                         <span
-                          className="text-xs font-bold tracking-wider px-3 py-1.5 rounded-md inline-block mb-3"
-                          style={{ background: 'rgba(139, 92, 246, 0.12)', color: '#9333ea' }}
+                          className="text-xs font-bold tracking-wider px-3 py-1.5 rounded-full inline-block mb-3"
+                          style={{
+                            background: 'var(--glass-bg)',
+                            backdropFilter: 'blur(12px)',
+                            WebkitBackdropFilter: 'blur(12px)',
+                            border: '1px solid var(--glass-border)',
+                            color: 'var(--accent-cyan)',
+                            boxShadow: 'var(--glass-inner-highlight)',
+                          }}
                         >
                           {item.year}
                         </span>

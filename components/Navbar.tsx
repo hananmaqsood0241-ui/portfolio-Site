@@ -74,19 +74,21 @@ export default function Navbar() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: 'easeOut' }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled ? 'py-3' : 'py-5'
         }`}
         style={{
           background: scrolled
-            ? 'rgba(10, 10, 15, 0.92)'
+            ? 'var(--glass-bg-thick)'
             : 'transparent',
-          backdropFilter: scrolled ? 'blur(20px)' : 'none',
-          borderBottom: scrolled ? '1px solid rgba(139, 92, 246, 0.15)' : 'none',
+          backdropFilter: scrolled ? 'blur(30px)' : 'none',
+          WebkitBackdropFilter: scrolled ? 'blur(30px)' : 'none',
+          borderBottom: scrolled ? '1px solid var(--glass-border)' : 'none',
+          boxShadow: scrolled ? 'var(--glass-shadow), var(--glass-inner-highlight)' : 'none',
         }}
       >
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 flex items-center justify-between">
-          {/* Logo */}
+          {/* Logo — Fixed: removed ".dev" */}
           <motion.a
             href="#"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
@@ -95,8 +97,8 @@ export default function Navbar() {
             whileHover={{ scale: 1.05 }}
           >
             <span className="gradient-text">Hanan</span>
-            <span style={{ color: 'var(--text-secondary)', fontSize: '14px', marginLeft: '4px', fontWeight: 400 }}>
-              .dev
+            <span style={{ color: 'var(--text-secondary)', fontSize: '13px', marginLeft: '6px', fontWeight: 400 }}>
+              | Email Marketer
             </span>
           </motion.a>
 
@@ -106,12 +108,11 @@ export default function Navbar() {
               <button
                 key={link.label}
                 onClick={() => handleNavClick(link.href)}
-                className={`text-sm font-medium transition-all duration-200 cursor-pointer bg-transparent border-none ${
-                  activeSection === link.href.slice(1)
-                    ? 'text-purple-400'
-                    : 'hover:text-purple-400'
-                }`}
-                style={{ color: activeSection === link.href.slice(1) ? '#a855f7' : 'var(--text-secondary)' }}
+                className={`text-sm font-medium transition-all duration-300 cursor-pointer bg-transparent border-none`}
+                style={{
+                  color: activeSection === link.href.slice(1) ? 'var(--accent-cyan)' : 'var(--text-secondary)',
+                  textShadow: activeSection === link.href.slice(1) ? '0 0 12px rgba(0,210,211,0.4)' : 'none',
+                }}
               >
                 {link.label}
               </button>
@@ -124,11 +125,14 @@ export default function Navbar() {
             <motion.button
               whileTap={{ scale: 0.9 }}
               onClick={toggleTheme}
-              className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 cursor-pointer"
+              className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 cursor-pointer"
               style={{
-                background: 'rgba(139, 92, 246, 0.15)',
-                border: '1px solid rgba(139, 92, 246, 0.3)',
+                background: 'var(--glass-bg)',
+                backdropFilter: 'blur(16px)',
+                WebkitBackdropFilter: 'blur(16px)',
+                border: '1px solid var(--glass-border)',
                 color: 'var(--text-primary)',
+                boxShadow: 'var(--glass-inner-highlight)',
               }}
               aria-label="Toggle theme"
             >
@@ -152,9 +156,12 @@ export default function Navbar() {
               onClick={() => setMenuOpen(!menuOpen)}
               className="md:hidden w-10 h-10 rounded-full flex items-center justify-center cursor-pointer"
               style={{
-                background: 'rgba(139, 92, 246, 0.15)',
-                border: '1px solid rgba(139, 92, 246, 0.3)',
+                background: 'var(--glass-bg)',
+                backdropFilter: 'blur(16px)',
+                WebkitBackdropFilter: 'blur(16px)',
+                border: '1px solid var(--glass-border)',
                 color: 'var(--text-primary)',
+                boxShadow: 'var(--glass-inner-highlight)',
               }}
               aria-label="Toggle menu"
             >
@@ -172,11 +179,13 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.2 }}
-            className="fixed top-20 left-4 right-4 z-40 rounded-2xl py-4 px-4 shadow-2xl"
+            className="fixed top-20 left-4 right-4 z-40 rounded-3xl py-4 px-4 shadow-2xl"
             style={{
-              background: 'rgba(10, 10, 20, 0.97)',
-              backdropFilter: 'blur(20px)',
-              border: '1px solid rgba(139, 92, 246, 0.2)',
+              background: 'var(--glass-bg-thick)',
+              backdropFilter: 'blur(30px)',
+              WebkitBackdropFilter: 'blur(30px)',
+              border: '1px solid var(--glass-border)',
+              boxShadow: 'var(--glass-shadow), var(--glass-inner-highlight)',
             }}
           >
             {navLinks.map((link, i) => (
@@ -186,7 +195,7 @@ export default function Navbar() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: i * 0.05 }}
                 onClick={() => handleNavClick(link.href)}
-                className="w-full text-left py-3 px-4 rounded-xl text-sm font-medium cursor-pointer block bg-transparent border-none"
+                className="w-full text-left py-3 px-4 rounded-xl text-sm font-medium cursor-pointer block bg-transparent border-none transition-colors duration-200"
                 style={{ color: 'var(--text-secondary)' }}
               >
                 {link.label}
@@ -206,7 +215,7 @@ export default function Navbar() {
         href="https://wa.me/923443069241"
         target="_blank"
         rel="noopener noreferrer"
-        className="whatsapp-float fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full flex items-center justify-center text-white text-2xl"
+        className="whatsapp-float fixed bottom-6 left-6 z-50 w-14 h-14 rounded-full flex items-center justify-center text-white text-2xl"
         style={{ background: 'linear-gradient(135deg, #25D366, #128C7E)' }}
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}

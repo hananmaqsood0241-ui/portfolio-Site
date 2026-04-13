@@ -1,6 +1,5 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper/modules';
@@ -9,44 +8,44 @@ import 'swiper/css/pagination';
 
 const testimonials = [
   {
-    name: 'Sarah Johnson',
-    role: 'Founder, StyleBoutique',
-    company: 'eCommerce Fashion Brand',
-    avatar: '👩‍💼',
+    name: 'Fashion Brand Founder',
+    initials: 'FB',
+    company: 'eCommerce Brand, United Kingdom',
     rating: 5,
     text: "Hanan completely transformed our email marketing. Our abandoned cart flow alone generates over $12,000 per month, and our welcome series has a 48% open rate that I never thought was possible. Absolutely worth every penny.",
+    initialsGradient: 'linear-gradient(135deg, #3b82f6, #00d2d3)',
   },
   {
-    name: 'Marcus Chen',
-    role: 'CEO, TaskFlow Pro',
-    company: 'SaaS Startup',
-    avatar: '👨‍💻',
+    name: 'SaaS CEO',
+    initials: 'SC',
+    company: 'SaaS Startup, United States',
     rating: 5,
     text: "We hired Hanan to fix our onboarding sequence that was bleeding free trial users. Within 60 days, our trial-to-paid conversion rate jumped 34%. The ROI has been extraordinary. Already planning our next project with him.",
+    initialsGradient: 'linear-gradient(135deg, #22c55e, #38d9a9)',
   },
   {
-    name: 'Aisha Williams',
-    role: 'Business Coach',
-    company: 'Service Business',
-    avatar: '👩‍🎓',
+    name: 'Business Coach',
+    initials: 'BC',
+    company: 'Service Business, Australia',
     rating: 5,
     text: "My email list went from 1,200 to nearly 4,000 subscribers in 4 months, and my newsletter open rate is consistently above 44%. Hanan's strategy turned my email into my #1 client acquisition channel. Game-changer!",
+    initialsGradient: 'linear-gradient(135deg, #f59e0b, #f783ac)',
   },
   {
-    name: 'David Martinez',
-    role: 'Marketing Director',
-    company: 'Beauty eCommerce Brand',
-    avatar: '👨‍💼',
+    name: 'Marketing Director',
+    initials: 'MD',
+    company: 'Beauty eCommerce Brand, United States',
     rating: 5,
     text: "The abandoned cart flow Hanan built recovered 38% more revenue than our old setup. His understanding of Klaviyo is exceptional, and his copy is genuinely compelling. Hanan doesn't just set things up — he makes them convert.",
+    initialsGradient: 'linear-gradient(135deg, #ec4899, #b197fc)',
   },
   {
-    name: 'Priya Sharma',
-    role: 'Head of Growth',
-    company: 'FinTech SaaS',
-    avatar: '👩‍💻',
+    name: 'Head of Growth',
+    initials: 'HG',
+    company: 'FinTech SaaS, Canada',
     rating: 5,
     text: "Hanan re-engaged over 1,800 dormant users with a masterfully crafted win-back sequence. His A/B testing methodology is rigorous and results-driven. If you need email marketing that actually works, Hanan is your person.",
+    initialsGradient: 'linear-gradient(135deg, #8b5cf6, #00d2d3)',
   },
 ];
 
@@ -57,7 +56,7 @@ export default function Testimonials() {
       <div
         className="absolute inset-0"
         style={{
-          background: 'linear-gradient(180deg, transparent, rgba(124, 58, 237, 0.05) 50%, transparent)',
+          background: 'linear-gradient(180deg, transparent, rgba(177, 151, 252, 0.03) 50%, transparent)',
         }}
       />
 
@@ -70,7 +69,7 @@ export default function Testimonials() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <span className="text-sm font-semibold tracking-widest uppercase mb-3 block" style={{ color: '#a855f7' }}>
+          <span className="text-sm font-semibold tracking-widest uppercase mb-3 block" style={{ color: 'var(--accent-cyan)' }}>
             Client Testimonials
           </span>
           <h2 className="section-title">
@@ -106,13 +105,21 @@ export default function Testimonials() {
             {testimonials.map((t, i) => (
               <SwiperSlide key={i} className="h-auto">
                 <div
-                  className="rounded-3xl p-8 h-full flex flex-col transition-all duration-300 hover:border-purple-500/30 hover:bg-white/[0.04]"
+                  className="rounded-3xl p-8 h-full flex flex-col transition-all duration-400 relative overflow-hidden"
                   style={{
-                    background: 'rgba(255, 255, 255, 0.02)',
-                    border: '1px solid rgba(139, 92, 246, 0.15)',
-                    backdropFilter: 'blur(10px)',
+                    background: 'var(--glass-bg)',
+                    border: '1px solid var(--glass-border)',
+                    backdropFilter: 'blur(24px)',
+                    WebkitBackdropFilter: 'blur(24px)',
+                    boxShadow: 'var(--glass-shadow), var(--glass-inner-highlight)',
                   }}
                 >
+                  {/* Top highlight */}
+                  <div
+                    className="absolute top-0 left-0 right-0 h-[1px]"
+                    style={{ background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent)' }}
+                  />
+
                   {/* Stars */}
                   <div className="flex gap-1 mb-5">
                     {Array.from({ length: t.rating }).map((_, si) => (
@@ -128,23 +135,22 @@ export default function Testimonials() {
                     &ldquo;{t.text}&rdquo;
                   </blockquote>
 
-                  {/* Author */}
+                  {/* Author — Anonymized with initials circle (#8) */}
                   <div className="flex items-center gap-4 mt-auto">
+                    {/* Initials circle instead of emoji avatar */}
                     <div
-                      className="w-12 h-12 rounded-full flex items-center justify-center text-2xl flex-shrink-0"
+                      className="w-12 h-12 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0"
                       style={{
-                        background: 'linear-gradient(135deg, rgba(124, 58, 237, 0.2), rgba(168, 85, 247, 0.1))',
-                        border: '1px solid rgba(139, 92, 246, 0.25)',
+                        background: t.initialsGradient,
+                        color: '#fff',
+                        boxShadow: `0 4px 12px rgba(0,0,0,0.2)`,
                       }}
                     >
-                      {t.avatar}
+                      {t.initials}
                     </div>
                     <div className="flex flex-col">
                       <div className="font-bold text-base" style={{ color: 'var(--text-primary)' }}>
                         {t.name}
-                      </div>
-                      <div className="text-sm font-medium mt-0.5" style={{ color: '#a855f7' }}>
-                        {t.role}
                       </div>
                       <div className="text-xs mt-0.5" style={{ color: 'var(--text-secondary)' }}>
                         {t.company}

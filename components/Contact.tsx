@@ -1,38 +1,95 @@
 'use client';
 
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { FiSend, FiUser, FiMail, FiMessageSquare } from 'react-icons/fi';
+import { useState, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FiSend, FiUser, FiMail, FiMessageSquare, FiCopy, FiCheck } from 'react-icons/fi';
+import emailjs from '@emailjs/browser';
+
+// ═══════════════════════════════════════════════════════════════
+// EMAILJS CONFIGURATION — Fill in your credentials below:
+//
+// 1. Create a free EmailJS account at https://www.emailjs.com
+// 2. Add an Email Service (e.g., Gmail) → get your SERVICE_ID
+// 3. Create an Email Template → get your TEMPLATE_ID
+//    Template variables: {{from_name}}, {{from_email}}, {{service}}, {{message}}
+// 4. Go to Account → get your PUBLIC_KEY
+//
+// Replace the placeholders below:
+// ═══════════════════════════════════════════════════════════════
+const EMAILJS_SERVICE_ID = 'service_tnbbs9s';
+const EMAILJS_TEMPLATE_ID = 'template_17u3yos';
+const EMAILJS_PUBLIC_KEY = '6KuWcf_cVyyWfGnec';
 
 export default function Contact() {
-  const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
+  const formRef = useRef<HTMLFormElement>(null);
+  const [form, setForm] = useState({ name: '', email: '', subject: '', message: '', honeypot: '' });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [toast, setToast] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
+  const [emailCopied, setEmailCopied] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      setSubmitted(true);
-    }, 1500);
+  const showToast = (type: 'success' | 'error', message: string) => {
+    setToast({ type, message });
+    setTimeout(() => setToast(null), 5000);
   };
 
-  const inputStyle = {
-    background: 'rgba(0, 0, 0, 0.2)', // Darker background to ensure visibility
-    border: '1px solid rgba(139, 92, 246, 0.3)', // Stronger border
-    borderRadius: '12px',
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // Honeypot spam protection — if honeypot field is filled, it's a bot
+    if (form.honeypot) {
+      setSubmitted(true);
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          from_name: form.name,
+          from_email: form.email,
+          service: form.subject,
+          message: form.message,
+        },
+        EMAILJS_PUBLIC_KEY
+      );
+
+      setLoading(false);
+      setSubmitted(true);
+      showToast('success', "Message sent! I'll reply within 24 hours ✅");
+    } catch {
+      setLoading(false);
+      showToast('error', "Something went wrong. Please WhatsApp me directly.");
+    }
+  };
+
+  const copyEmail = () => {
+    navigator.clipboard.writeText('hananmaqsood0241@gmail.com');
+    setEmailCopied(true);
+    setTimeout(() => setEmailCopied(false), 2000);
+  };
+
+  const inputStyle: React.CSSProperties = {
+    background: 'var(--glass-bg)',
+    backdropFilter: 'blur(16px)',
+    WebkitBackdropFilter: 'blur(16px)',
+    border: '1px solid var(--glass-border)',
+    borderRadius: '16px',
     padding: '14px 16px',
     width: '100%',
     color: 'var(--text-primary)',
     fontSize: '14px',
     outline: 'none',
-    transition: 'border-color 0.2s ease',
+    transition: 'border-color 0.3s ease, box-shadow 0.3s ease',
     fontFamily: 'Inter, sans-serif',
+    boxShadow: 'var(--glass-inner-highlight)',
   };
 
   const contactCards = [
@@ -47,10 +104,11 @@ export default function Contact() {
     {
       icon: '📧',
       title: 'Email',
-      value: 'Available upon request',
-      link: 'https://wa.me/923443069241',
-      linkText: 'Send a Message',
-      color: '#8b5cf6',
+      value: 'hananmaqsood0241@gmail.com',
+      link: 'mailto:hananmaqsood0241@gmail.com',
+      linkText: 'Send Email',
+      color: 'var(--accent-cyan)',
+      showCopy: true,
     },
     {
       icon: '🌍',
@@ -64,17 +122,52 @@ export default function Contact() {
 
   return (
     <section id="contact" className="py-16 lg:py-24 relative overflow-hidden">
+      {/* Toast Notification */}
+      <AnimatePresence>
+        {toast && (
+          <motion.div
+            initial={{ opacity: 0, y: -50, x: '-50%' }}
+            animate={{ opacity: 1, y: 0, x: '-50%' }}
+            exit={{ opacity: 0, y: -50, x: '-50%' }}
+            className="fixed top-24 left-1/2 z-[100] px-6 py-4 rounded-2xl text-sm font-semibold max-w-md"
+            style={{
+              background: toast.type === 'success'
+                ? 'linear-gradient(135deg, rgba(34, 197, 94, 0.9), rgba(16, 185, 129, 0.9))'
+                : 'linear-gradient(135deg, rgba(239, 68, 68, 0.9), rgba(220, 38, 38, 0.9))',
+              backdropFilter: 'blur(20px)',
+              WebkitBackdropFilter: 'blur(20px)',
+              color: '#fff',
+              boxShadow: '0 16px 48px rgba(0,0,0,0.3)',
+              border: '1px solid rgba(255,255,255,0.2)',
+            }}
+          >
+            {toast.message}
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* BG orb */}
       <div
         className="orb"
         style={{
           width: '500px',
           height: '500px',
-          background: 'radial-gradient(circle, #7c3aed, transparent)',
+          background: 'radial-gradient(circle, #00d2d3, transparent)',
           top: '50%',
           right: '-200px',
           transform: 'translateY(-50%)',
-          opacity: 0.08,
+          opacity: 0.06,
+        }}
+      />
+      <div
+        className="orb"
+        style={{
+          width: '350px',
+          height: '350px',
+          background: 'radial-gradient(circle, #f783ac, transparent)',
+          bottom: '-100px',
+          left: '-100px',
+          opacity: 0.04,
         }}
       />
 
@@ -87,7 +180,7 @@ export default function Contact() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <span className="text-sm font-semibold tracking-widest uppercase mb-3 block" style={{ color: '#a855f7' }}>
+          <span className="text-sm font-semibold tracking-widest uppercase mb-3 block" style={{ color: 'var(--accent-cyan)' }}>
             Get In Touch
           </span>
           <h2 className="section-title">
@@ -116,46 +209,77 @@ export default function Contact() {
               30-minute consultation to discuss your goals.
             </p>
 
-            {/* Contact cards */}
+            {/* Contact cards — glass */}
             <div className="space-y-4 mb-8">
               {contactCards.map((card) => (
                 <div
                   key={card.title}
                   className="flex items-center gap-4 p-4 rounded-2xl"
                   style={{
-                    background: 'rgba(255, 255, 255, 0.03)',
-                    border: '1px solid rgba(139, 92, 246, 0.15)',
+                    background: 'var(--glass-bg)',
+                    backdropFilter: 'blur(16px)',
+                    WebkitBackdropFilter: 'blur(16px)',
+                    border: '1px solid var(--glass-border)',
+                    boxShadow: 'var(--glass-inner-highlight)',
                   }}
                 >
                   <div
                     className="w-12 h-12 rounded-xl flex items-center justify-center text-xl flex-shrink-0"
-                    style={{ background: `${card.color}20`, border: `1px solid ${card.color}30` }}
+                    style={{
+                      background: 'var(--glass-bg-thick)',
+                      border: '1px solid var(--glass-border)',
+                      boxShadow: 'var(--glass-inner-highlight)',
+                    }}
                   >
                     {card.icon}
                   </div>
-                  <div className="flex-1">
+                  <div className="flex-1 min-w-0">
                     <div className="text-xs font-semibold mb-0.5" style={{ color: 'var(--text-secondary)' }}>
                       {card.title}
                     </div>
-                    <div className="text-sm font-medium" style={{ color: 'var(--text-primary)' }}>
+                    <div className="text-sm font-medium truncate" style={{ color: 'var(--text-primary)' }}>
                       {card.value}
                     </div>
                   </div>
-                  {card.link && (
-                    <a
-                      href={card.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-xs font-semibold px-4 py-2 rounded-xl transition-all"
-                      style={{
-                        background: `${card.color}20`,
-                        color: card.color,
-                        border: `1px solid ${card.color}30`,
-                      }}
-                    >
-                      {card.linkText}
-                    </a>
-                  )}
+                  <div className="flex items-center gap-2 flex-shrink-0">
+                    {/* Copy to clipboard button for email (#3) */}
+                    {card.showCopy && (
+                      <motion.button
+                        onClick={copyEmail}
+                        className="w-8 h-8 rounded-lg flex items-center justify-center cursor-pointer"
+                        style={{
+                          background: 'var(--glass-bg)',
+                          border: '1px solid var(--glass-border)',
+                          color: emailCopied ? 'var(--accent-teal)' : 'var(--text-secondary)',
+                          boxShadow: 'var(--glass-inner-highlight)',
+                        }}
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.95 }}
+                        title={emailCopied ? 'Copied!' : 'Copy email'}
+                      >
+                        {emailCopied ? <FiCheck size={14} /> : <FiCopy size={14} />}
+                      </motion.button>
+                    )}
+                    {card.link && (
+                      <a
+                        href={card.link}
+                        target={card.link.startsWith('mailto:') ? undefined : '_blank'}
+                        rel="noopener noreferrer"
+                        className="text-xs font-semibold px-4 py-2 rounded-full transition-all"
+                        style={{
+                          background: 'var(--glass-bg)',
+                          backdropFilter: 'blur(12px)',
+                          WebkitBackdropFilter: 'blur(12px)',
+                          color: card.color,
+                          border: '1px solid var(--glass-border)',
+                          boxShadow: 'var(--glass-inner-highlight)',
+                          textDecoration: 'none',
+                        }}
+                      >
+                        {card.linkText}
+                      </a>
+                    )}
+                  </div>
                 </div>
               ))}
             </div>
@@ -166,8 +290,12 @@ export default function Contact() {
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-3 w-full py-4 px-6 rounded-2xl font-semibold text-white transition-all"
-              style={{ background: 'linear-gradient(135deg, #25D366, #128C7E)' }}
-              whileHover={{ scale: 1.02, boxShadow: '0 10px 30px rgba(37, 211, 102, 0.3)' }}
+              style={{
+                background: 'linear-gradient(135deg, #25D366, #128C7E)',
+                boxShadow: '0 4px 20px rgba(37, 211, 102, 0.3), inset 0 1px 1px rgba(255,255,255,0.25)',
+                textDecoration: 'none',
+              }}
+              whileHover={{ scale: 1.02, boxShadow: '0 10px 30px rgba(37, 211, 102, 0.4)' }}
               whileTap={{ scale: 0.98 }}
             >
               <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22">
@@ -177,7 +305,7 @@ export default function Contact() {
             </motion.a>
           </motion.div>
 
-          {/* Right — Contact Form */}
+          {/* Right — Contact Form — EmailJS integration (#2) */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -190,8 +318,11 @@ export default function Contact() {
                 animate={{ opacity: 1, scale: 1 }}
                 className="h-full flex flex-col items-center justify-center text-center p-12 rounded-3xl"
                 style={{
-                  background: 'rgba(139, 92, 246, 0.08)',
-                  border: '1px solid rgba(139, 92, 246, 0.25)',
+                  background: 'var(--glass-bg-thick)',
+                  backdropFilter: 'blur(30px)',
+                  WebkitBackdropFilter: 'blur(30px)',
+                  border: '1px solid var(--glass-border)',
+                  boxShadow: 'var(--glass-shadow), var(--glass-inner-highlight)',
                 }}
               >
                 <div className="text-6xl mb-4">🎉</div>
@@ -205,16 +336,37 @@ export default function Contact() {
               </motion.div>
             ) : (
               <form
+                ref={formRef}
                 onSubmit={handleSubmit}
-                className="p-8 rounded-3xl space-y-5"
+                className="p-8 rounded-3xl space-y-5 relative overflow-hidden"
                 style={{
-                  background: 'rgba(255, 255, 255, 0.03)',
-                  border: '1px solid rgba(139, 92, 246, 0.18)',
+                  background: 'var(--glass-bg-thick)',
+                  backdropFilter: 'blur(30px)',
+                  WebkitBackdropFilter: 'blur(30px)',
+                  border: '1px solid var(--glass-border)',
+                  boxShadow: 'var(--glass-shadow), var(--glass-inner-highlight)',
                 }}
               >
+                {/* Top highlight */}
+                <div
+                  className="absolute top-0 left-0 right-0 h-[1px]"
+                  style={{ background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent)' }}
+                />
+
                 <h3 className="text-lg font-bold" style={{ fontFamily: 'Space Grotesk, sans-serif', color: 'var(--text-primary)' }}>
                   Send Me a Message
                 </h3>
+
+                {/* Honeypot field — hidden for spam protection (#2) */}
+                <input
+                  type="text"
+                  name="honeypot"
+                  value={form.honeypot}
+                  onChange={handleChange}
+                  style={{ display: 'none' }}
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
 
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
@@ -230,10 +382,9 @@ export default function Contact() {
                         value={form.name}
                         onChange={handleChange}
                         placeholder="John Doe"
-                        className="bg-black/20 dark:bg-white/5"
                         style={{ ...inputStyle, paddingLeft: '38px' }}
-                        onFocus={(e) => { e.target.style.borderColor = '#8b5cf6'; }}
-                        onBlur={(e) => { e.target.style.borderColor = 'rgba(139, 92, 246, 0.3)'; }}
+                        onFocus={(e) => { e.target.style.borderColor = 'var(--accent-cyan)'; e.target.style.boxShadow = '0 0 16px rgba(0,210,211,0.15), var(--glass-inner-highlight)'; }}
+                        onBlur={(e) => { e.target.style.borderColor = ''; e.target.style.boxShadow = 'var(--glass-inner-highlight)'; }}
                       />
                     </div>
                   </div>
@@ -250,10 +401,9 @@ export default function Contact() {
                         value={form.email}
                         onChange={handleChange}
                         placeholder="you@company.com"
-                        className="bg-black/20 dark:bg-white/5"
                         style={{ ...inputStyle, paddingLeft: '38px' }}
-                        onFocus={(e) => { e.target.style.borderColor = '#8b5cf6'; }}
-                        onBlur={(e) => { e.target.style.borderColor = 'rgba(139, 92, 246, 0.3)'; }}
+                        onFocus={(e) => { e.target.style.borderColor = 'var(--accent-cyan)'; e.target.style.boxShadow = '0 0 16px rgba(0,210,211,0.15), var(--glass-inner-highlight)'; }}
+                        onBlur={(e) => { e.target.style.borderColor = ''; e.target.style.boxShadow = 'var(--glass-inner-highlight)'; }}
                       />
                     </div>
                   </div>
@@ -269,17 +419,17 @@ export default function Contact() {
                     value={form.subject}
                     onChange={handleChange}
                     style={{ ...inputStyle }}
-                    onFocus={(e) => { e.target.style.borderColor = '#8b5cf6'; }}
-                    onBlur={(e) => { e.target.style.borderColor = 'rgba(139, 92, 246, 0.2)'; }}
+                    onFocus={(e) => { e.target.style.borderColor = 'var(--accent-cyan)'; e.target.style.boxShadow = '0 0 16px rgba(0,210,211,0.15), var(--glass-inner-highlight)'; }}
+                    onBlur={(e) => { e.target.style.borderColor = ''; e.target.style.boxShadow = 'var(--glass-inner-highlight)'; }}
                   >
-                    <option value="" style={{ background: '#0f0f1a' }}>Select a service...</option>
-                    <option value="Email Campaign Management" style={{ background: '#0f0f1a' }}>Email Campaign Management</option>
-                    <option value="Email Automation Setup" style={{ background: '#0f0f1a' }}>Email Automation Setup</option>
-                    <option value="Email Template Design" style={{ background: '#0f0f1a' }}>Email Template Design</option>
-                    <option value="Deliverability Optimization" style={{ background: '#0f0f1a' }}>Deliverability Optimization</option>
-                    <option value="A/B Testing" style={{ background: '#0f0f1a' }}>A/B Testing & Optimization</option>
-                    <option value="Strategy Consulting" style={{ background: '#0f0f1a' }}>Email Strategy Consulting</option>
-                    <option value="Full Package" style={{ background: '#0f0f1a' }}>Full Email Marketing Package</option>
+                    <option value="" style={{ background: 'var(--bg-secondary)' }}>Select a service...</option>
+                    <option value="Email Campaign Management" style={{ background: 'var(--bg-secondary)' }}>Email Campaign Management</option>
+                    <option value="Email Automation Setup" style={{ background: 'var(--bg-secondary)' }}>Email Automation Setup</option>
+                    <option value="Email Template Design" style={{ background: 'var(--bg-secondary)' }}>Email Template Design</option>
+                    <option value="Deliverability Optimization" style={{ background: 'var(--bg-secondary)' }}>Deliverability Optimization</option>
+                    <option value="A/B Testing" style={{ background: 'var(--bg-secondary)' }}>A/B Testing & Optimization</option>
+                    <option value="Strategy Consulting" style={{ background: 'var(--bg-secondary)' }}>Email Strategy Consulting</option>
+                    <option value="Full Package" style={{ background: 'var(--bg-secondary)' }}>Full Email Marketing Package</option>
                   </select>
                 </div>
 
@@ -296,10 +446,9 @@ export default function Contact() {
                       value={form.message}
                       onChange={handleChange}
                       placeholder="Tell me about your business, current email setup, and what you'd like to achieve..."
-                      className="bg-black/20 dark:bg-white/5"
                       style={{ ...inputStyle, paddingLeft: '38px', resize: 'vertical' }}
-                      onFocus={(e) => { e.target.style.borderColor = '#8b5cf6'; }}
-                      onBlur={(e) => { e.target.style.borderColor = 'rgba(139, 92, 246, 0.3)'; }}
+                      onFocus={(e) => { e.target.style.borderColor = 'var(--accent-cyan)'; e.target.style.boxShadow = '0 0 16px rgba(0,210,211,0.15), var(--glass-inner-highlight)'; }}
+                      onBlur={(e) => { e.target.style.borderColor = ''; e.target.style.boxShadow = 'var(--glass-inner-highlight)'; }}
                     />
                   </div>
                 </div>

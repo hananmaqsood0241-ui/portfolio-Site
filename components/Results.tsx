@@ -27,7 +27,7 @@ const stats = [
     icon: '⏱️',
   },
   {
-    value: 50,
+    value: 100,
     suffix: '+',
     label: 'Campaigns Delivered',
     desc: 'Successful email campaigns across eCommerce, SaaS, and services sectors.',
@@ -54,11 +54,11 @@ export default function Results() {
 
   return (
     <section id="results" className="py-16 lg:py-24 relative overflow-hidden">
-      {/* Gradient background */}
+      {/* Ambient gradient */}
       <div
         className="absolute inset-0"
         style={{
-          background: 'linear-gradient(180deg, transparent, rgba(124, 58, 237, 0.05) 50%, transparent)',
+          background: 'linear-gradient(180deg, transparent, rgba(0, 210, 211, 0.03) 50%, transparent)',
         }}
       />
 
@@ -71,7 +71,7 @@ export default function Results() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <span className="text-sm font-semibold tracking-widest uppercase mb-3 block" style={{ color: '#a855f7' }}>
+          <span className="text-sm font-semibold tracking-widest uppercase mb-3 block" style={{ color: 'var(--accent-cyan)' }}>
             Results & Achievements
           </span>
           <h2 className="section-title">
@@ -98,9 +98,11 @@ export default function Results() {
               className="stat-card group flex flex-col items-center justify-center text-center"
             >
               <div className="text-4xl mb-4">{stat.icon}</div>
+              {/* Counter with static fallback (#5) — data-target attr + noscript fallback */}
               <div
                 className="text-4xl xl:text-5xl font-black mb-3 gradient-text"
                 style={{ fontFamily: 'Space Grotesk, sans-serif' }}
+                data-target={`${stat.value}${stat.suffix}`}
               >
                 {inView ? (
                   <CountUp
@@ -111,7 +113,8 @@ export default function Results() {
                     suffix={stat.suffix}
                   />
                 ) : (
-                  `0${stat.suffix}`
+                  /* Static fallback: show final value immediately if JS is slow */
+                  `${stat.value}${stat.suffix}`
                 )}
               </div>
               <h3 className="text-lg font-bold mb-2" style={{ color: 'var(--text-primary)' }}>
@@ -124,14 +127,13 @@ export default function Results() {
           ))}
         </div>
 
-        {/* Bottom highlight */}
+        {/* Bottom highlight — glass-card */}
         <motion.div
-          className="mt-16 glass rounded-3xl p-8 sm:p-10 text-center"
+          className="mt-16 glass-card p-8 sm:p-10 text-center"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}
-          style={{ border: '1px solid rgba(139, 92, 246, 0.2)' }}
         >
           <p className="text-lg sm:text-xl font-medium mb-3" style={{ color: 'var(--text-primary)' }}>
             🏆 Experienced with <span className="gradient-text font-bold">eCommerce, SaaS, and Service-Based Businesses</span>
