@@ -14,9 +14,8 @@ const caseStudies = [
     description:
       'Designed a 7-email welcome series for a fashion eCommerce brand that introduced new subscribers to the brand story, product categories, and social proof — with a personalized discount on email 3.',
     results: [
-      { label: 'Open Rate', value: '48%' },
-      { label: 'CTR', value: '18%' },
       { label: 'Revenue Attributed', value: '$12K/mo' },
+      { label: 'Conversion Rate', value: '+5.4%' },
     ],
     tools: ['Klaviyo', 'Canva'],
     icon: '👗',
@@ -31,8 +30,7 @@ const caseStudies = [
       'Built an 8-step onboarding email sequence for a project management SaaS tool, guiding trial users through key features and driving conversions from free to paid subscriptions.',
     results: [
       { label: 'Trial-to-Paid', value: '+34%' },
-      { label: 'Open Rate', value: '42%' },
-      { label: 'Churn Reduction', value: '22%' },
+      { label: 'User Retention', value: '+18%' },
     ],
     tools: ['ConvertKit', 'HubSpot'],
     icon: '💻',
@@ -47,8 +45,7 @@ const caseStudies = [
       'Developed a weekly value-driven newsletter strategy for a business coach, growing the email list by 200% and positioning them as an industry authority that converts readers into high-ticket clients.',
     results: [
       { label: 'List Growth', value: '+200%' },
-      { label: 'Open Rate', value: '44%' },
-      { label: 'CTR', value: '22%' },
+      { label: 'High-Ticket Sales', value: '$18K' },
     ],
     tools: ['MailerLite', 'Zapier'],
     icon: '🎯',
@@ -62,9 +59,8 @@ const caseStudies = [
     description:
       'Rebuilt an abandoned cart recovery flow for a beauty brand using 3-email sequences with urgency triggers, social proof, and a time-limited offer, dramatically improving cart recovery rates.',
     results: [
-      { label: 'Recovery Rate', value: '+38%' },
-      { label: 'Revenue/Flow', value: '$8K/mo' },
-      { label: 'Email Open Rate', value: '51%' },
+      { label: 'Cart Recovery Rate', value: '+38%' },
+      { label: 'Flow Revenue', value: '$8.4K/mo' },
     ],
     tools: ['Klaviyo', 'Google Analytics'],
     icon: '🛒',
@@ -79,8 +75,7 @@ const caseStudies = [
       'Created a win-back automation for a SaaS product targeting inactive subscribers with personalized subject lines tested via A/B methodology, successfully re-engaging over 1,800 dormant users.',
     results: [
       { label: 'Re-engaged Users', value: '1,800+' },
-      { label: 'Open Rate', value: '36%' },
-      { label: 'Conversions', value: '+28%' },
+      { label: 'Reactivation Rate', value: '14.5%' },
     ],
     tools: ['Brevo', 'Google Sheets'],
     icon: '🔄',
@@ -94,9 +89,8 @@ const caseStudies = [
     description:
       'Orchestrated a combined SMS and email flash sale campaign for an online retailer, coordinating timing and messaging across both channels to maximize reach and conversion during a 48-hour sale window.',
     results: [
-      { label: 'Sale Revenue', value: '+65%' },
-      { label: 'SMS CTR', value: '19%' },
-      { label: 'Email CTR', value: '22%' },
+      { label: 'Campaign Revenue', value: '+65%' },
+      { label: 'SMS CTR', value: '14.2%' },
     ],
     tools: ['Klaviyo', 'Notion'],
     icon: '📱',
@@ -221,7 +215,7 @@ export default function Portfolio() {
               </p>
 
               {/* Results — glass metric boxes */}
-              <div className="grid grid-cols-3 gap-2 sm:gap-4 mb-6">
+              <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-6">
                 {study.results.map((r) => (
                   <div
                     key={r.label}

@@ -36,7 +36,7 @@ const steps = [
 
 export default function Process() {
   return (
-    <section className="py-16 lg:py-24 relative overflow-hidden">
+    <section id="process" className="py-16 lg:py-24 relative overflow-hidden">
       {/* BG elements */}
       <div
         className="orb"

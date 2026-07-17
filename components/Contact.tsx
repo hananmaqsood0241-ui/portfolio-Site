@@ -431,6 +431,9 @@ export default function Contact() {
                     <option value="Strategy Consulting" style={{ background: 'var(--bg-secondary)' }}>Email Strategy Consulting</option>
                     <option value="Full Package" style={{ background: 'var(--bg-secondary)' }}>Full Email Marketing Package</option>
                   </select>
+                  <span className="text-[11px] mt-1.5 block opacity-85" style={{ color: 'var(--text-secondary)' }}>
+                    Not sure? Just select &apos;Full Package&apos; and I&apos;ll guide you.
+                  </span>
                 </div>
 
                 <div>

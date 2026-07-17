@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
 import Image from 'next/image';
 import { FiArrowRight, FiMail, FiLinkedin } from 'react-icons/fi';
+import { FaWhatsapp } from 'react-icons/fa';
 
 export default function Hero() {
   return (
@@ -102,12 +103,31 @@ export default function Hero() {
               Into Customers
             </motion.h1>
 
+            {/* Subheading - Concrete Consultation Callout */}
+            <motion.div
+              initial={{ opacity:0, y:20 }}
+              animate={{ opacity:1, y:0 }}
+              transition={{ delay:0.35, duration:0.6 }}
+              className="text-base md:text-lg font-bold mb-4 flex flex-wrap items-center justify-center lg:justify-start gap-1 sm:gap-2 px-4 py-2.5 rounded-2xl"
+              style={{
+                color: 'var(--accent-cyan)',
+                background: 'rgba(0, 210, 211, 0.05)',
+                border: '1px solid rgba(0, 210, 211, 0.15)',
+                boxShadow: 'var(--glass-inner-highlight)',
+                fontFamily: 'Space Grotesk, sans-serif'
+              }}
+            >
+              <span>Free 30-minute consultation</span>
+              <span className="opacity-60">→</span>
+              <span className="gradient-text font-black">Custom email strategy delivered in 48 hours</span>
+            </motion.div>
+
             {/* Typing — Updated as per spec #18 */}
             <motion.div
               initial={{ opacity:0 }}
               animate={{ opacity:1 }}
               transition={{ delay:0.45 }}
-              className="min-h-[60px] md:min-h-[30px]"
+              className="min-h-[40px] md:min-h-[30px]"
               style={{ color:'var(--accent-teal)', fontSize:'1.1rem', fontWeight:600, marginBottom:'18px' }}
             >
               <TypeAnimation
@@ -135,34 +155,34 @@ export default function Hero() {
             >
               I help eCommerce, SaaS, and service-based businesses grow revenue and
               retain customers through strategic campaigns, smart automation, and
-              data-driven optimisation.{' '}
-              <strong style={{ color:'var(--text-primary)' }}>Up to 48% open rates — real results.</strong>
+              data-driven optimisation.
             </motion.p>
 
-            {/* CTA buttons */}
+            {/* CTA buttons - Prominent WhatsApp and smaller outline View Work */}
             <motion.div
               initial={{ opacity:0, y:20 }}
               animate={{ opacity:1, y:0 }}
               transition={{ delay:0.65 }}
-              className="flex flex-wrap gap-4 justify-center lg:justify-start mb-5 w-full"
+              className="flex flex-col sm:flex-row gap-4 items-center justify-center lg:justify-start mb-6 w-full"
             >
+              <motion.a
+                href="https://wa.me/923443069241?text=Hi%20Hanan!%20I%20found%20your%20portfolio%20and%20I%27d%20like%20to%20book%20a%20free%20consultation."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary w-full sm:w-auto justify-center px-8 py-3.5"
+                whileHover={{ scale:1.04 }}
+                whileTap={{ scale:0.97 }}
+              >
+                <FaWhatsapp className="text-xl" /> Book Free Consultation
+              </motion.a>
               <motion.a
                 href="#portfolio"
                 onClick={e=>{e.preventDefault();document.querySelector('#portfolio')?.scrollIntoView({behavior:'smooth'});}}
-                className="btn-primary"
-                whileHover={{ scale:1.04 }}
+                className="btn-outline text-xs opacity-75 hover:opacity-100 hover:border-transparent py-2.5 px-5 w-full sm:w-auto justify-center"
+                whileHover={{ scale:1.02, background: 'rgba(255,255,255,0.05)' }}
                 whileTap={{ scale:0.97 }}
               >
-                View My Work <FiArrowRight />
-              </motion.a>
-              <motion.a
-                href="#contact"
-                onClick={e=>{e.preventDefault();document.querySelector('#contact')?.scrollIntoView({behavior:'smooth'});}}
-                className="btn-outline"
-                whileHover={{ scale:1.04 }}
-                whileTap={{ scale:0.97 }}
-              >
-                <FiMail /> Contact Me
+                View My Work
               </motion.a>
             </motion.div>
 
