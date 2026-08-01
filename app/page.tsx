@@ -17,6 +17,8 @@ import AvailabilityBadge from '@/components/AvailabilityBadge';
 export default function Home() {
   return (
     <main>
+      {/* Global 3D animated star background */}
+      <div className="bg-stars" aria-hidden="true" />
       <Navbar />
       <Hero />
       <About />

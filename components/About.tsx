@@ -46,26 +46,26 @@ export default function About() {
     <section id="about" className="py-16 lg:py-24 relative overflow-hidden">
       {/* Background element */}
       <div
-        className="orb"
+        className="orb orb-1"
         style={{
           width: '500px',
           height: '500px',
-          background: 'radial-gradient(circle, #00d2d3, transparent)',
+          background: 'radial-gradient(circle, #00f5ff, transparent)',
           top: '50%',
           left: '-200px',
           transform: 'translateY(-50%)',
-          opacity: 0.06,
+          opacity: 0.08,
         }}
       />
       <div
-        className="orb"
+        className="orb orb-3"
         style={{
-          width: '350px',
-          height: '350px',
-          background: 'radial-gradient(circle, #f783ac, transparent)',
+          width: '380px',
+          height: '380px',
+          background: 'radial-gradient(circle, #f472b6, transparent)',
           bottom: '-100px',
           right: '-100px',
-          opacity: 0.05,
+          opacity: 0.07,
         }}
       />
 
@@ -202,7 +202,10 @@ export default function About() {
                 {/* Vertical line — iridescent */}
                 <div
                   className="absolute left-[7px] top-2 bottom-0 w-[2px] rounded-full"
-                  style={{ background: 'linear-gradient(to bottom, var(--accent-cyan), var(--accent-lilac), rgba(177,151,252,0.1))' }}
+                  style={{ 
+                    background: 'linear-gradient(to bottom, var(--accent-cyan), var(--accent-lilac), rgba(192,132,252,0.1))',
+                    boxShadow: '0 0 8px rgba(0,245,255,0.2)',
+                  }}
                 />
 
                 <div className="space-y-10">

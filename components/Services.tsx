@@ -50,25 +50,25 @@ export default function Services() {
     <section id="services" className="py-16 lg:py-24 relative overflow-hidden">
       {/* BG */}
       <div
-        className="orb"
+        className="orb orb-1"
         style={{
-          width: '500px',
-          height: '500px',
-          background: 'radial-gradient(circle, #b197fc, transparent)',
+          width: '550px',
+          height: '550px',
+          background: 'radial-gradient(circle, #c084fc, transparent)',
           top: '20%',
           right: '-200px',
-          opacity: 0.06,
+          opacity: 0.09,
         }}
       />
       <div
-        className="orb"
+        className="orb orb-2"
         style={{
-          width: '350px',
-          height: '350px',
-          background: 'radial-gradient(circle, #00d2d3, transparent)',
+          width: '380px',
+          height: '380px',
+          background: 'radial-gradient(circle, #00f5ff, transparent)',
           bottom: '10%',
           left: '-150px',
-          opacity: 0.05,
+          opacity: 0.07,
         }}
       />
 

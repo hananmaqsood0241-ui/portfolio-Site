@@ -14,7 +14,7 @@ const tools = [
   { name: 'Canva', emoji: '🎨', color: '#00c4cc', tooltip: 'Email template design' },
   { name: 'Google Analytics', emoji: '📊', color: '#f59e0b', tooltip: 'Campaign performance tracking' },
   { name: 'Google Sheets', emoji: '📗', color: '#22c55e', tooltip: 'Data management & reporting' },
-  { name: 'Notion', emoji: '⬛', color: '#a1a1aa', tooltip: 'Project & workflow management' },
+  { name: 'Notion', emoji: '⚪', color: '#e2e8f0', tooltip: 'Project & workflow management' },
   { name: 'ActiveCampaign', emoji: '🔴', color: '#ef4444', tooltip: 'Marketing automation & CRM' },
 ];
 
@@ -25,8 +25,8 @@ export default function Tools() {
     <section id="tools" className="py-16 lg:py-24 relative overflow-hidden">
       {/* Separator line — iridescent */}
       <div
-        className="absolute top-0 left-0 right-0 h-px"
-        style={{ background: 'linear-gradient(90deg, transparent, var(--accent-cyan), var(--accent-lilac), var(--accent-pink), transparent)' }}
+        className="absolute top-0 left-0 right-0 h-[2px]"
+        style={{ background: 'linear-gradient(90deg, transparent, var(--accent-cyan), var(--accent-lilac), var(--accent-pink), transparent)', boxShadow: '0 0 16px rgba(0,245,255,0.25)' }}
       />
 
       <div className="w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 relative z-10">
@@ -119,8 +119,8 @@ export default function Tools() {
 
       {/* Bottom separator — iridescent */}
       <div
-        className="absolute bottom-0 left-0 right-0 h-px"
-        style={{ background: 'linear-gradient(90deg, transparent, var(--accent-pink), var(--accent-lilac), var(--accent-cyan), transparent)' }}
+        className="absolute bottom-0 left-0 right-0 h-[2px]"
+        style={{ background: 'linear-gradient(90deg, transparent, var(--accent-pink), var(--accent-lilac), var(--accent-cyan), transparent)', boxShadow: '0 0 16px rgba(192,132,252,0.25)' }}
       />
     </section>
   );

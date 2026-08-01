@@ -46,8 +46,8 @@ export default function Footer() {
     >
       {/* Top separator — iridescent gradient */}
       <div
-        className="absolute top-0 left-0 right-0 h-px"
-        style={{ background: 'linear-gradient(90deg, transparent, var(--accent-cyan), var(--accent-lilac), var(--accent-pink), transparent)' }}
+        className="absolute top-0 left-0 right-0 h-[2px]"
+        style={{ background: 'linear-gradient(90deg, transparent, var(--accent-cyan), var(--accent-lilac), var(--accent-pink), transparent)', boxShadow: '0 0 20px rgba(0,245,255,0.3)' }}
       />
 
       <div className="w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 relative z-10">

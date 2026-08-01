@@ -39,14 +39,14 @@ export default function Process() {
     <section id="process" className="py-16 lg:py-24 relative overflow-hidden">
       {/* BG elements */}
       <div
-        className="orb"
+        className="orb orb-2"
         style={{
           width: '500px',
           height: '500px',
-          background: 'radial-gradient(circle, #00d2d3, transparent)',
+          background: 'radial-gradient(circle, #00f5ff, transparent)',
           top: '40%',
           right: '-200px',
-          opacity: 0.05,
+          opacity: 0.07,
         }}
       />
 
@@ -77,8 +77,9 @@ export default function Process() {
           <div
             className="hidden lg:block absolute top-[72px] left-[12%] right-[12%] h-[2px]"
             style={{
-              background: 'linear-gradient(90deg, var(--accent-cyan), var(--accent-lilac), var(--accent-pink), var(--accent-mint))',
-              opacity: 0.3,
+              background: 'linear-gradient(90deg, var(--accent-cyan), var(--accent-lilac), var(--accent-pink), var(--accent-teal))',
+              opacity: 0.5,
+              boxShadow: '0 0 12px rgba(0,245,255,0.3)',
             }}
           />
 
@@ -108,10 +109,10 @@ export default function Process() {
               <div
                 className="relative rounded-3xl p-8 text-center flex flex-col items-center transition-all duration-400 h-full"
                 style={{
-                  background: 'rgba(255, 255, 255, 0.05)',
+                  background: 'rgba(255, 255, 255, 0.09)',
                   backdropFilter: 'blur(20px)',
                   WebkitBackdropFilter: 'blur(20px)',
-                  border: '1px solid rgba(255, 255, 255, 0.1)',
+                  border: '1px solid rgba(255, 255, 255, 0.18)',
                   boxShadow: 'var(--glass-shadow), var(--glass-inner-highlight)',
                 }}
               >

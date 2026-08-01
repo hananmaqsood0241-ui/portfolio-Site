@@ -6,24 +6,26 @@ const options = [
   {
     icon: '🌱',
     title: 'New to email marketing?',
-    desc: 'Main aapke liye poora email system set up karunga — from scratch.',
+    subtitle: 'Starting from scratch',
+    desc: "I'll set up your complete email system from the ground up — list setup, automation flows, templates, and your first campaign — all ready to generate revenue from day one.",
     badge: 'Setup from Scratch',
     badgeColor: 'var(--accent-teal)',
     gradient: 'radial-gradient(circle at top left, rgba(56, 217, 169, 0.15), transparent 60%)',
   },
   {
     icon: '📈',
-    title: 'Already have email marketing but results kam hain?',
-    desc: 'Main audit karke fix karunga — automation, deliverability, ya copy jo bhi weak hai.',
+    title: 'Have email marketing but not seeing results?',
+    subtitle: 'Underperforming campaigns',
+    desc: "I'll audit your existing setup, diagnose what's holding you back — whether it's weak automation, poor deliverability, or ineffective copy — and fix it to unlock your full growth potential.",
     badge: 'Audit & Optimization',
     badgeColor: 'var(--accent-cyan)',
     gradient: 'radial-gradient(circle at top left, rgba(0, 210, 211, 0.15), transparent 60%)',
   },
   {
     icon: '⚡',
-    title: 'Bas ek specific cheez chahiye?',
-    subtitle: '(jaise ek flow, ek template)',
-    desc: 'Standalone service, fast turnaround.',
+    title: 'Need one specific thing done?',
+    subtitle: 'A single flow or template',
+    desc: 'No need for a full package. I offer standalone services — a single automation flow, a set of email templates, or a one-off campaign — delivered fast with the same quality and attention to detail.',
     badge: 'Quick Turnaround',
     badgeColor: 'var(--accent-pink)',
     gradient: 'radial-gradient(circle at top left, rgba(247, 131, 172, 0.15), transparent 60%)',
@@ -66,14 +68,18 @@ export default function WhatIOffer() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <span className="text-sm font-semibold tracking-widest uppercase mb-3 block" style={{ color: 'var(--accent-cyan)' }}>
+          <span
+            className="text-sm font-semibold tracking-widest uppercase mb-3 block"
+            style={{ color: 'var(--accent-cyan)' }}
+          >
             Identify Your Situation
           </span>
           <h2 className="section-title">
             What <span className="gradient-text">I Offer</span>
           </h2>
           <p className="section-subtitle mx-auto">
-            Aapki requirement jo bhi ho, client onboarding se lekar campaigns optimize karne tak — I have a solution for you.
+            Whatever stage you&apos;re at — starting from zero or scaling an existing setup — I have
+            the right solution to help you grow with email marketing.
           </p>
         </motion.div>
 
@@ -81,7 +87,7 @@ export default function WhatIOffer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
           {options.map((opt, i) => (
             <motion.div
-              key={opt.title}
+              key={opt.badge}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -100,22 +106,24 @@ export default function WhatIOffer() {
                 boxShadow: 'var(--glass-shadow-hover), var(--glass-inner-highlight)',
               }}
             >
-              {/* Highlight background radial glow */}
+              {/* Hover radial glow */}
               <div
                 className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                 style={{ background: opt.gradient }}
               />
 
-              {/* Glass Top Highlight Line */}
+              {/* Top highlight line */}
               <div
                 className="absolute top-0 left-0 right-0 h-[1px] rounded-t-3xl"
-                style={{ background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent)' }}
+                style={{
+                  background:
+                    'linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent)',
+                }}
               />
 
               <div>
-                {/* Header Container */}
+                {/* Icon + Badge */}
                 <div className="flex items-center justify-between mb-6">
-                  {/* Icon */}
                   <div
                     className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl transition-transform duration-300 group-hover:scale-110"
                     style={{
@@ -127,7 +135,6 @@ export default function WhatIOffer() {
                     {opt.icon}
                   </div>
 
-                  {/* Badge */}
                   <span
                     className="text-[10px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full"
                     style={{
@@ -140,28 +147,32 @@ export default function WhatIOffer() {
                   </span>
                 </div>
 
-                {/* Situation text */}
+                {/* Title + Subtitle */}
                 <h3
-                  className="text-xl font-bold leading-tight mb-4 group-hover:text-white transition-colors duration-300"
+                  className="text-xl font-bold leading-tight mb-2 group-hover:text-white transition-colors duration-300"
                   style={{ fontFamily: 'Space Grotesk, sans-serif', color: 'var(--text-primary)' }}
                 >
                   {opt.title}
-                  {opt.subtitle && (
-                    <span className="block text-sm font-medium mt-1 opacity-70" style={{ color: 'var(--text-secondary)' }}>
-                      {opt.subtitle}
-                    </span>
-                  )}
                 </h3>
+                <p
+                  className="text-xs font-medium mb-4 opacity-70"
+                  style={{ color: 'var(--text-secondary)' }}
+                >
+                  {opt.subtitle}
+                </p>
 
-                {/* Solution text */}
+                {/* Description */}
                 <p className="text-sm leading-relaxed mb-6" style={{ color: 'var(--text-secondary)' }}>
                   {opt.desc}
                 </p>
               </div>
 
-              {/* Action Indicator */}
-              <div className="mt-4 flex items-center gap-1 text-xs font-bold transition-all duration-300" style={{ color: 'var(--accent-cyan)' }}>
-                <span>Aapke Liye Solution</span>
+              {/* Action link */}
+              <div
+                className="mt-4 flex items-center gap-1 text-xs font-bold transition-all duration-300"
+                style={{ color: 'var(--accent-cyan)' }}
+              >
+                <span>Find Your Solution</span>
                 <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
               </div>
             </motion.div>

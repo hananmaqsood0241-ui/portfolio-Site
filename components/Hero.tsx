@@ -12,11 +12,11 @@ export default function Hero() {
       id="hero"
       className="relative min-h-screen flex items-center overflow-hidden pt-32 pb-16 lg:pt-40 lg:pb-24"
     >
-      {/* Animated gradient background — dark blue to near-black */}
+      {/* Deep space background */}
       <div
         className="absolute inset-0 z-0"
         style={{
-          background: 'linear-gradient(135deg, #0d1b2a 0%, #1a1a2e 30%, #16162a 60%, #0a0a1a 100%)',
+          background: 'linear-gradient(160deg, var(--bg-primary) 0%, var(--bg-secondary) 100%)',
         }}
       />
 
@@ -55,12 +55,11 @@ export default function Hero() {
       </motion.div>
 
       {/* BG orbs — iridescent multi-color */}
-      <div className="orb" style={{ width:'600px', height:'600px', background:'radial-gradient(circle,#00d2d3,#38d9a9)', top:'-200px', right:'-150px', opacity:0.1 }} />
-      <div className="orb" style={{ width:'400px', height:'400px', background:'radial-gradient(circle,#b197fc,#f783ac)', bottom:'-80px', left:'-120px', opacity:0.08 }} />
-      <div className="orb" style={{ width:'300px', height:'300px', background:'radial-gradient(circle,#f783ac,#00d2d3)', top:'40%', left:'50%', opacity:0.05 }} />
+      <div className="orb orb-1" style={{ width:'700px', height:'700px', background:'radial-gradient(circle, var(--accent-cyan), transparent 68%)', top:'-250px', right:'-200px', opacity:0.12 }} />
+      <div className="orb orb-2" style={{ width:'500px', height:'500px', background:'radial-gradient(circle, var(--accent-gold), transparent 68%)', bottom:'-100px', left:'-150px', opacity:0.06 }} />
 
       {/* Subtle grid */}
-      <div className="absolute inset-0" style={{ backgroundImage:`linear-gradient(rgba(0,210,211,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,210,211,0.04) 1px,transparent 1px)`, backgroundSize:'60px 60px' }} />
+      <div className="absolute inset-0" style={{ backgroundImage:`linear-gradient(rgba(145,222,210,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(145,222,210,0.025) 1px,transparent 1px)`, backgroundSize:'88px 88px' }} />
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-16 lg:gap-14">
@@ -82,7 +81,7 @@ export default function Hero() {
                 background:'var(--glass-bg)',
                 backdropFilter:'blur(16px)',
                 WebkitBackdropFilter:'blur(16px)',
-                border:'1px solid var(--glass-border)',
+                border:'1px solid rgba(145,222,210,0.28)',
                 color:'var(--accent-cyan)',
                 boxShadow:'var(--glass-inner-highlight)',
               }}
@@ -111,8 +110,8 @@ export default function Hero() {
               className="text-base md:text-lg font-bold mb-4 flex flex-wrap items-center justify-center lg:justify-start gap-1 sm:gap-2 px-4 py-2.5 rounded-2xl"
               style={{
                 color: 'var(--accent-cyan)',
-                background: 'rgba(0, 210, 211, 0.05)',
-                border: '1px solid rgba(0, 210, 211, 0.15)',
+                background: 'rgba(145, 222, 210, 0.06)',
+                border: '1px solid rgba(0, 245, 255, 0.18)',
                 boxShadow: 'var(--glass-inner-highlight)',
                 fontFamily: 'Space Grotesk, sans-serif'
               }}
@@ -128,7 +127,7 @@ export default function Hero() {
               animate={{ opacity:1 }}
               transition={{ delay:0.45 }}
               className="min-h-[40px] md:min-h-[30px]"
-              style={{ color:'var(--accent-teal)', fontSize:'1.1rem', fontWeight:600, marginBottom:'18px' }}
+              style={{ color:'var(--accent-teal)', fontSize:'1.15rem', fontWeight:700, marginBottom:'18px' }}
             >
               <TypeAnimation
                 sequence={[
@@ -137,6 +136,8 @@ export default function Hero() {
                   'Klaviyo Flows That Sell 24/7...',
                   4000,
                   'Automation That Grows Revenue...',
+                  4000,
+                  'Open Rates Up to 48% Achieved...',
                   4000,
                 ]}
                 wrapper="span"
@@ -155,7 +156,7 @@ export default function Hero() {
             >
               I help eCommerce, SaaS, and service-based businesses grow revenue and
               retain customers through strategic campaigns, smart automation, and
-              data-driven optimisation.
+              data-driven optimization.
             </motion.p>
 
             {/* CTA buttons - Prominent WhatsApp and smaller outline View Work */}
@@ -254,7 +255,6 @@ export default function Hero() {
                       fontFamily:'Space Grotesk,sans-serif',
                       fontSize:'1.75rem',
                       fontWeight:900,
-                      textShadow: '0 0 20px rgba(0, 210, 211, 0.3)',
                     }}
                     data-target={s.value}
                   >
@@ -278,9 +278,9 @@ export default function Hero() {
               {/* Animated iridescent gradient ring */}
               <div style={{
                 width:'100%', height:'100%', borderRadius:'50%',
-                background:'conic-gradient(from 0deg,#00d2d3,#b197fc,#f783ac,#38d9a9,#00d2d3)',
+                background:'linear-gradient(145deg, var(--accent-teal), var(--accent-gold))',
                 padding:'4px', position:'relative',
-              }} className="neon-border">
+              }}>
                 <div style={{ width:'100%', height:'100%', borderRadius:'50%', background:'var(--bg-primary)', padding:'6px' }}>
                   <div style={{ width:'100%', height:'100%', borderRadius:'50%', overflow:'hidden', position:'relative', background:'var(--bg-secondary)' }}>
                     <Image

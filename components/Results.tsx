@@ -58,7 +58,7 @@ export default function Results() {
       <div
         className="absolute inset-0"
         style={{
-          background: 'linear-gradient(180deg, transparent, rgba(0, 210, 211, 0.03) 50%, transparent)',
+          background: 'linear-gradient(180deg, transparent, rgba(0, 245, 255, 0.05) 50%, transparent)',
         }}
       />
 

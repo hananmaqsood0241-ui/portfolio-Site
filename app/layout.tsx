@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://localhost:3000'),
   title: "Hanan — Email Marketing Expert | Klaviyo, Mailchimp & Automation Specialist",
   description:
     "Hanan — Email Marketing Specialist from Pakistan. Klaviyo, Mailchimp & automation expert with 48% open rates. Available for freelance email campaigns, automation setup, and strategy.",
@@ -22,7 +23,7 @@ export const metadata: Metadata = {
       "I help eCommerce and SaaS brands grow revenue with email marketing. 48% open rates. 3+ years experience.",
     type: "website",
     locale: "en_US",
-    images: ["/hanan-og.png"],
+    images: ["/hanan.png"],
   },
   twitter: {
     card: "summary_large_image",

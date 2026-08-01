@@ -72,10 +72,10 @@ export default function WhyHireMe() {
               transition={{ delay: i * 0.15, duration: 0.6 }}
               className="relative group rounded-3xl p-8 text-center flex flex-col items-center transition-all duration-400"
               style={{
-                background: 'rgba(255, 255, 255, 0.05)',
+                background: 'rgba(255, 255, 255, 0.09)',
                 backdropFilter: 'blur(20px)',
                 WebkitBackdropFilter: 'blur(20px)',
-                border: '1px solid rgba(255, 255, 255, 0.1)',
+                border: '1px solid rgba(255, 255, 255, 0.18)',
                 boxShadow: 'var(--glass-shadow), var(--glass-inner-highlight)',
               }}
             >

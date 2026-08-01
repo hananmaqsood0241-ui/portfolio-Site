@@ -13,7 +13,7 @@ const testimonials = [
     company: 'eCommerce Brand, United Kingdom',
     rating: 5,
     text: "Hanan completely transformed our email marketing. Our abandoned cart flow alone generates over $12,000 per month, and our welcome series has a 48% open rate that I never thought was possible. Absolutely worth every penny.",
-    initialsGradient: 'linear-gradient(135deg, #3b82f6, #00d2d3)',
+    initialsGradient: 'linear-gradient(135deg, #00f5ff, #818cf8)',
   },
   {
     name: 'SaaS CEO',
@@ -21,7 +21,7 @@ const testimonials = [
     company: 'SaaS Startup, United States',
     rating: 5,
     text: "We hired Hanan to fix our onboarding sequence that was bleeding free trial users. Within 60 days, our trial-to-paid conversion rate jumped 34%. The ROI has been extraordinary. Already planning our next project with him.",
-    initialsGradient: 'linear-gradient(135deg, #22c55e, #38d9a9)',
+    initialsGradient: 'linear-gradient(135deg, #00e5b0, #00f5ff)',
   },
   {
     name: 'Business Coach',
@@ -29,7 +29,7 @@ const testimonials = [
     company: 'Service Business, Australia',
     rating: 5,
     text: "My email list went from 1,200 to nearly 4,000 subscribers in 4 months, and my newsletter open rate is consistently above 44%. Hanan's strategy turned my email into my #1 client acquisition channel. Game-changer!",
-    initialsGradient: 'linear-gradient(135deg, #f59e0b, #f783ac)',
+    initialsGradient: 'linear-gradient(135deg, #fbbf24, #f472b6)',
   },
   {
     name: 'Marketing Director',
@@ -37,7 +37,7 @@ const testimonials = [
     company: 'Beauty eCommerce Brand, United States',
     rating: 5,
     text: "The abandoned cart flow Hanan built recovered 38% more revenue than our old setup. His understanding of Klaviyo is exceptional, and his copy is genuinely compelling. Hanan doesn't just set things up — he makes them convert.",
-    initialsGradient: 'linear-gradient(135deg, #ec4899, #b197fc)',
+    initialsGradient: 'linear-gradient(135deg, #f472b6, #c084fc)',
   },
   {
     name: 'Head of Growth',
@@ -45,7 +45,7 @@ const testimonials = [
     company: 'FinTech SaaS, Canada',
     rating: 5,
     text: "Hanan re-engaged over 1,800 dormant users with a masterfully crafted win-back sequence. His A/B testing methodology is rigorous and results-driven. If you need email marketing that actually works, Hanan is your person.",
-    initialsGradient: 'linear-gradient(135deg, #8b5cf6, #00d2d3)',
+    initialsGradient: 'linear-gradient(135deg, #c084fc, #00f5ff)',
   },
 ];
 
@@ -56,7 +56,7 @@ export default function Testimonials() {
       <div
         className="absolute inset-0"
         style={{
-          background: 'linear-gradient(180deg, transparent, rgba(177, 151, 252, 0.03) 50%, transparent)',
+          background: 'linear-gradient(180deg, transparent, rgba(192, 132, 252, 0.06) 50%, transparent)',
         }}
       />
 
@@ -117,7 +117,7 @@ export default function Testimonials() {
                   {/* Top highlight */}
                   <div
                     className="absolute top-0 left-0 right-0 h-[1px]"
-                    style={{ background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent)' }}
+                    style={{ background: 'linear-gradient(90deg, transparent, rgba(0,245,255,0.5), rgba(192,132,252,0.4), transparent)' }}
                   />
 
                   {/* Stars */}
