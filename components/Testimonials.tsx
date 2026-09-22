@@ -4,8 +4,14 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper/modules';
+import Image, { StaticImageData } from 'next/image';
 import 'swiper/css';
 import 'swiper/css/pagination';
+
+import review1 from '../public/reviews/review-1.png';
+import review2 from '../public/reviews/review-2.png';
+import review3 from '../public/reviews/review-3.png';
+import review4 from '../public/reviews/review-4.png';
 
 interface Testimonial {
   name: string;
@@ -14,7 +20,7 @@ interface Testimonial {
   rating: number;
   text: string;
   initialsGradient: string;
-  image?: string;
+  image?: StaticImageData | string;
   isVerified?: boolean;
 }
 
@@ -26,7 +32,7 @@ const testimonials: Testimonial[] = [
     rating: 5,
     text: "I'm really happy with the delivery. The seller was professional, responsive, and understood exactly what I needed. The work was delivered on time and matched my expectations perfectly. Communication throughout the process was smooth, and I genuinely appreciate the effort put into the final result. Would love to work together again in the future. Highly recommended 👍",
     initialsGradient: 'linear-gradient(135deg, #00f5ff, #818cf8)',
-    image: '/reviews/review-1.png',
+    image: review1,
     isVerified: true,
   },
   {
@@ -36,7 +42,7 @@ const testimonials: Testimonial[] = [
     rating: 5,
     text: "Fantastic work! We are pleased with the results, and the service provided. The work was very high in quality and done with professionalism. The communication was really good throughout the whole process, and he was easy to work with. Highly recommended.",
     initialsGradient: 'linear-gradient(135deg, #00e5b0, #00f5ff)',
-    image: '/reviews/review-2.png',
+    image: review2,
     isVerified: true,
   },
   {
@@ -46,7 +52,7 @@ const testimonials: Testimonial[] = [
     rating: 5,
     text: "I had an excellent experience working with Hanan From start to finish, the communication was clear, professional, and friendly. He understood exactly what I needed and delivered high-quality work. The project was delivered right on time. I highly recommend him.",
     initialsGradient: 'linear-gradient(135deg, #fbbf24, #f472b6)',
-    image: '/reviews/review-3.png',
+    image: review3,
     isVerified: true,
   },
   {
@@ -56,7 +62,7 @@ const testimonials: Testimonial[] = [
     rating: 5,
     text: "Thank you so very much for your work on my project! It is another time that we have come together on my projects. I hope to use your services again soon! Thank you so very much for your work!",
     initialsGradient: 'linear-gradient(135deg, #f472b6, #c084fc)',
-    image: '/reviews/review-4.png',
+    image: review4,
     isVerified: true,
   },
   {
@@ -80,14 +86,14 @@ const testimonials: Testimonial[] = [
 ];
 
 const realReviewImages = [
-  { src: '/reviews/review-1.png', label: 'E-commerce Delivery Review' },
-  { src: '/reviews/review-2.png', label: 'High Quality Service Feedback' },
-  { src: '/reviews/review-3.png', label: 'Clear & Professional Work Review' },
-  { src: '/reviews/review-4.png', label: 'Repeat Client Satisfaction Review' },
+  { src: review1, label: 'E-commerce Delivery Review' },
+  { src: review2, label: 'High Quality Service Feedback' },
+  { src: review3, label: 'Clear & Professional Work Review' },
+  { src: review4, label: 'Repeat Client Satisfaction Review' },
 ];
 
 export default function Testimonials() {
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [selectedImage, setSelectedImage] = useState<StaticImageData | string | null>(null);
 
   return (
     <section id="testimonials" className="py-24 relative overflow-hidden">
@@ -155,8 +161,7 @@ export default function Testimonials() {
                 <div className="absolute inset-0 bg-gradient-to-r from-[rgba(0,245,255,0.1)] to-[rgba(192,132,252,0.1)] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
                 <div className="relative rounded-xl overflow-hidden bg-white/95 p-3 flex items-center justify-center min-h-[160px]">
-                  {/* eslint-disable-next-next/no-img-element */}
-                  <img
+                  <Image
                     src={img.src}
                     alt={img.label}
                     className="max-h-[220px] w-auto object-contain transition-transform duration-300 group-hover:scale-105"
@@ -241,8 +246,7 @@ export default function Testimonials() {
                       onClick={() => setSelectedImage(t.image!)}
                       className="mb-4 rounded-xl overflow-hidden cursor-pointer border border-white/10 hover:border-[#00f5ff]/50 transition-all bg-white p-2 group relative"
                     >
-                      {/* eslint-disable-next-next/no-img-element */}
-                      <img
+                      <Image
                         src={t.image}
                         alt={`Screenshot of review by ${t.name}`}
                         className="w-full max-h-32 object-contain group-hover:scale-105 transition-transform duration-300"
@@ -314,8 +318,7 @@ export default function Testimonials() {
                 ✕
               </button>
               <div className="bg-white rounded-2xl p-4 overflow-auto max-h-[75vh]">
-                {/* eslint-disable-next-next/no-img-element */}
-                <img
+                <Image
                   src={selectedImage}
                   alt="Verified Client Review Screenshot Full View"
                   className="w-full h-auto object-contain mx-auto"

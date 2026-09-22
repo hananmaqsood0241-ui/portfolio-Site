@@ -2,10 +2,31 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import { FiArrowRight, FiExternalLink, FiX, FiZoomIn, FiCheckCircle } from 'react-icons/fi';
 
-const caseStudies = [
+import proof9k from '../public/proof-9k-recurring.jpg';
+import proof4k from '../public/proof-4k-revenue.jpg';
+import proof19k from '../public/proof-19k-backend-flows.jpg';
+import proof800 from '../public/proof-800-micro-campaign.jpg';
+
+interface CaseStudy {
+  id: string;
+  tag: string;
+  tagColor: string;
+  title: string;
+  subtitle: string;
+  client: string;
+  image: StaticImageData;
+  imageAlt: string;
+  summary: string;
+  story: string;
+  results: { label: string; value: string }[];
+  tools: string[];
+  highlights: string[];
+}
+
+const caseStudies: CaseStudy[] = [
   {
     id: 'case-1',
     tag: 'Revenue Scaling',
@@ -13,7 +34,7 @@ const caseStudies = [
     title: 'Adding €9k/mo Recurring Revenue via Automated Email Strategy',
     subtitle: 'Klaviyo Performance Dashboard',
     client: 'Client: European E-Commerce Brand',
-    image: '/proof-9k-recurring.jpg',
+    image: proof9k,
     imageAlt: '€8,999.11 attributed email revenue dashboard screenshot',
     summary: 'Unlocked an extra €9,000+ monthly revenue in 30 days by building high-converting post-purchase and nurture automation flows.',
     story:
@@ -38,7 +59,7 @@ const caseStudies = [
     title: 'Quick-Turnaround $4k Revenue Boost & 91% Email Channel Share',
     subtitle: 'Automated Evergreen Email Flow',
     client: 'Client: Direct-to-Consumer Brand',
-    image: '/proof-4k-revenue.jpg',
+    image: proof4k,
     imageAlt: '$4,563.57 revenue from email automation screenshot',
     summary: 'A set-and-forget automated flow setup months ago continues to drive 91% of backend sales effortless revenue.',
     story:
@@ -63,7 +84,7 @@ const caseStudies = [
     title: 'Scaling Back-End Flows to $19.5k & $26.6k Total Attributed Revenue',
     subtitle: 'Klaviyo Back-End Growth Engine',
     client: 'Client: High-Growth E-Commerce Store',
-    image: '/proof-19k-backend-flows.jpg',
+    image: proof19k,
     imageAlt: '$26,643.68 total attributed email revenue screenshot showing $19,524.32 from flows',
     summary: 'Built a massive $19.5k automated flow machine, laying the foundation for scalable promotional campaigns.',
     story:
@@ -88,7 +109,7 @@ const caseStudies = [
     title: 'Quick Wins: £800 Revenue from 3 Emails to a Small 600-Recipient List',
     subtitle: 'Micro-List Campaign Strategy',
     client: 'Client: Niche E-Commerce Retailer',
-    image: '/proof-800-micro-campaign.jpg',
+    image: proof800,
     imageAlt: 'Campaign messages showing high open rates and AED revenue screenshot',
     summary: 'Proved list size isn’t everything by generating immediate cash flow from a fresh, 600-subscriber segment.',
     story:
@@ -110,7 +131,7 @@ const caseStudies = [
 
 export default function Portfolio() {
   const [selectedCase, setSelectedCase] = useState<(typeof caseStudies)[0] | null>(null);
-  const [activeImage, setActiveImage] = useState<string | null>(null);
+  const [activeImage, setActiveImage] = useState<StaticImageData | string | null>(null);
 
   return (
     <section id="portfolio" className="py-16 lg:py-24 relative overflow-hidden">

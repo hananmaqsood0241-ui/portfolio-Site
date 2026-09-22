@@ -5,6 +5,7 @@ import { TypeAnimation } from 'react-type-animation';
 import Image from 'next/image';
 import { FiArrowRight, FiMail, FiLinkedin } from 'react-icons/fi';
 import { FaWhatsapp } from 'react-icons/fa';
+import hananImg from '../public/hanan.png';
 
 export default function Hero() {
   return (
@@ -284,7 +285,7 @@ export default function Hero() {
                 <div style={{ width:'100%', height:'100%', borderRadius:'50%', background:'var(--bg-primary)', padding:'6px' }}>
                   <div style={{ width:'100%', height:'100%', borderRadius:'50%', overflow:'hidden', position:'relative', background:'var(--bg-secondary)' }}>
                     <Image
-                      src="/hanan.png"
+                      src={hananImg}
                       alt="Hanan — Email Marketing Expert"
                       fill
                       style={{ objectFit:'cover', objectPosition:'top center' }}
