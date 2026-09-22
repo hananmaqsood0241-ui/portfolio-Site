@@ -13,7 +13,7 @@ const caseStudies = [
     title: 'Adding €9k/mo Recurring Revenue via Automated Email Strategy',
     subtitle: 'Klaviyo Performance Dashboard',
     client: 'Client: European E-Commerce Brand',
-    image: '/media__1790077204127.jpg',
+    image: '/proof-9k-recurring.jpg',
     imageAlt: '€8,999.11 attributed email revenue dashboard screenshot',
     summary: 'Unlocked an extra €9,000+ monthly revenue in 30 days by building high-converting post-purchase and nurture automation flows.',
     story:
@@ -38,7 +38,7 @@ const caseStudies = [
     title: 'Quick-Turnaround $4k Revenue Boost & 91% Email Channel Share',
     subtitle: 'Automated Evergreen Email Flow',
     client: 'Client: Direct-to-Consumer Brand',
-    image: '/media__1790077204246.jpg',
+    image: '/proof-4k-revenue.jpg',
     imageAlt: '$4,563.57 revenue from email automation screenshot',
     summary: 'A set-and-forget automated flow setup months ago continues to drive 91% of backend sales effortless revenue.',
     story:
@@ -63,7 +63,7 @@ const caseStudies = [
     title: 'Scaling Back-End Flows to $19.5k & $26.6k Total Attributed Revenue',
     subtitle: 'Klaviyo Back-End Growth Engine',
     client: 'Client: High-Growth E-Commerce Store',
-    image: '/media__1790077204389.jpg',
+    image: '/proof-19k-backend-flows.jpg',
     imageAlt: '$26,643.68 total attributed email revenue screenshot showing $19,524.32 from flows',
     summary: 'Built a massive $19.5k automated flow machine, laying the foundation for scalable promotional campaigns.',
     story:
@@ -88,7 +88,7 @@ const caseStudies = [
     title: 'Quick Wins: £800 Revenue from 3 Emails to a Small 600-Recipient List',
     subtitle: 'Micro-List Campaign Strategy',
     client: 'Client: Niche E-Commerce Retailer',
-    image: '/media__1790077204414.jpg',
+    image: '/proof-800-micro-campaign.jpg',
     imageAlt: 'Campaign messages showing high open rates and AED revenue screenshot',
     summary: 'Proved list size isn’t everything by generating immediate cash flow from a fresh, 600-subscriber segment.',
     story:
