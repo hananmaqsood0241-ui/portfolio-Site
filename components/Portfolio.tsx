@@ -313,7 +313,8 @@ export default function Portfolio() {
               {/* Close Button */}
               <button
                 onClick={() => setSelectedCase(null)}
-                className="absolute top-5 right-5 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
+                className="absolute top-5 right-5 p-2 rounded-full bg-black/10 dark:bg-white/10 hover:bg-black/20 dark:hover:bg-white/20 transition-colors"
+                style={{ color: 'var(--text-primary)' }}
                 aria-label="Close modal"
               >
                 <FiX size={20} />
@@ -323,7 +324,8 @@ export default function Portfolio() {
                 <span
                   className="px-3 py-1 rounded-full text-xs font-bold inline-block mb-3"
                   style={{
-                    background: 'rgba(255, 255, 255, 0.1)',
+                    background: 'var(--glass-bg)',
+                    border: '1px solid var(--glass-border)',
                     color: selectedCase.tagColor,
                   }}
                 >
@@ -335,12 +337,13 @@ export default function Portfolio() {
                 >
                   {selectedCase.title}
                 </h3>
-                <p className="text-sm text-cyan-400 font-semibold">{selectedCase.client}</p>
+                <p className="text-sm font-semibold" style={{ color: 'var(--accent-cyan)' }}>{selectedCase.client}</p>
               </div>
 
               {/* Real Dashboard Image Banner */}
               <div
-                className="relative w-full h-64 sm:h-72 rounded-2xl overflow-hidden mb-6 border border-white/10 cursor-pointer"
+                className="relative w-full h-64 sm:h-72 rounded-2xl overflow-hidden mb-6 border cursor-pointer"
+                style={{ borderColor: 'var(--glass-border)' }}
                 onClick={() => setActiveImage(selectedCase.image)}
               >
                 <Image
@@ -356,17 +359,17 @@ export default function Portfolio() {
 
               {/* Story */}
               <div className="mb-6">
-                <h4 className="text-base font-bold mb-2 text-white">The Client Story & Solution:</h4>
-                <p className="text-sm sm:text-base leading-relaxed text-gray-300">{selectedCase.story}</p>
+                <h4 className="text-base font-bold mb-2" style={{ color: 'var(--text-primary)' }}>The Client Story & Solution:</h4>
+                <p className="text-sm sm:text-base leading-relaxed" style={{ color: 'var(--text-secondary)' }}>{selectedCase.story}</p>
               </div>
 
               {/* Key Highlights */}
               <div className="mb-6">
-                <h4 className="text-base font-bold mb-3 text-white">Key Breakdown:</h4>
+                <h4 className="text-base font-bold mb-3" style={{ color: 'var(--text-primary)' }}>Key Breakdown:</h4>
                 <ul className="space-y-2">
                   {selectedCase.highlights.map((item, idx) => (
-                    <li key={idx} className="flex items-start gap-2.5 text-sm text-gray-300">
-                      <FiCheckCircle className="text-teal-400 shrink-0 mt-0.5" size={16} />
+                    <li key={idx} className="flex items-start gap-2.5 text-sm" style={{ color: 'var(--text-secondary)' }}>
+                      <FiCheckCircle className="shrink-0 mt-0.5" size={16} style={{ color: 'var(--accent-teal)' }} />
                       <span>{item}</span>
                     </li>
                   ))}
@@ -378,20 +381,29 @@ export default function Portfolio() {
                 {selectedCase.results.map((r) => (
                   <div
                     key={r.label}
-                    className="p-3 rounded-2xl text-center bg-white/5 border border-white/10"
+                    className="p-3 rounded-2xl text-center"
+                    style={{
+                      background: 'var(--glass-bg)',
+                      border: '1px solid var(--glass-border)',
+                    }}
                   >
-                    <div className="font-extrabold text-lg text-cyan-300">{r.value}</div>
-                    <div className="text-[11px] text-gray-400 font-medium">{r.label}</div>
+                    <div className="font-extrabold text-lg" style={{ color: 'var(--accent-cyan)' }}>{r.value}</div>
+                    <div className="text-[11px] font-medium" style={{ color: 'var(--text-secondary)' }}>{r.label}</div>
                   </div>
                 ))}
               </div>
 
-              <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-white/10">
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t" style={{ borderColor: 'var(--glass-border)' }}>
                 <div className="flex flex-wrap gap-2">
                   {selectedCase.tools.map((t) => (
                     <span
                       key={t}
-                      className="text-xs px-3 py-1 rounded-full bg-white/5 border border-white/10 text-gray-300"
+                      className="text-xs px-3 py-1 rounded-full"
+                      style={{
+                        background: 'var(--glass-bg)',
+                        border: '1px solid var(--glass-border)',
+                        color: 'var(--text-secondary)',
+                      }}
                     >
                       {t}
                     </span>
