@@ -13,12 +13,14 @@ import FAQ from '@/components/FAQ';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import AvailabilityBadge from '@/components/AvailabilityBadge';
+import MotionOrchestrator from '@/components/MotionOrchestrator';
 
 export default function Home() {
   return (
     <main>
       {/* Global 3D animated star background */}
       <div className="bg-stars" aria-hidden="true" />
+      <MotionOrchestrator />
       <Navbar />
       <Hero />
       <About />
